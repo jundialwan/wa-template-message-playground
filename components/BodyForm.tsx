@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { bodyTextAtom, bodyTextLengthSelector } from '../Recoil/bodyText'
 
-const BodyTextareaInput: FC<{ value?: string }> = ({ value }) => {
+const BodyForm: FC<{ value?: string }> = ({ value }) => {
   const [bodyText, setBodyText] = useRecoilState(bodyTextAtom)
   const bodyTextLength = useRecoilValue(bodyTextLengthSelector)
 
@@ -23,4 +23,4 @@ const BodyTextareaInput: FC<{ value?: string }> = ({ value }) => {
   )
 }
 
-export default BodyTextareaInput
+export default BodyForm

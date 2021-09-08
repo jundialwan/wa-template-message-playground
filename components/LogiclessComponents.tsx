@@ -7,7 +7,7 @@ export const SectionSubtitle: FC<{ subtitle: string }> = ({ subtitle }) => <p cl
 
 export const PreviewComponent: FC = ({ children }) => {
   const PreviewComponentContainer = styled.div`
-    &:after {
+    &::after {
       background: url("/bcg-wa.png");
       background-size: contain;
       content: '';

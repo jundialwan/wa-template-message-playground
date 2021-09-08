@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useRecoilState } from 'recoil'
 import { footerTextSelector } from '../Recoil/footerText'
 
-const FooterInput: FC<{ value?: string }> = ({ value }) => {
+const FooterForm: FC<{ value?: string }> = ({ value }) => {
   const [footerText, setFooterText] = useRecoilState(footerTextSelector)
   
   const onTextChange = (e: any) => setFooterText(e.target.value)
@@ -18,4 +18,4 @@ const FooterInput: FC<{ value?: string }> = ({ value }) => {
   )
 }
 
-export default FooterInput
+export default FooterForm

@@ -1,7 +1,9 @@
 import { atom, DefaultValue, selector, selectorFamily } from 'recoil'
 
 type ButtonType = 'none' | 'cta' | 'reply'
+export type CTAButtonIndex = 0 | 1
 type CTAButtonComponent = {
+  enabled: boolean,
   type: 'visit-website' | 'call-phone',
   text: string,
   phone?: string,
@@ -21,18 +23,13 @@ type ButtonComponent = {
 }
 
 const defaultValueQuickReplyButtons: QuickReplyButtonComponent[] = [{ enabled: true, text: 'MyButton' }, { enabled: false, text: '' }, { enabled: false, text: '' }]
+const defaultValueCTAButtons: CTAButtonComponent[] = [{ enabled: true, type: 'visit-website', text: 'Visit our website', url: 'https://bahasa.ai' }, { enabled: true, type: 'call-phone', text: 'Call us', phone: '62813425160798' }]
 
 export const buttonsAtom = atom<ButtonComponent>({
   key: 'buttons',
   default: {
     type: 'none',
-    cta: [
-      {
-        type: 'visit-website',
-        text: '',
-        phone: '',
-      }
-    ],
+    cta: defaultValueCTAButtons,
     reply: defaultValueQuickReplyButtons
   }
 })
@@ -64,15 +61,6 @@ export const allQuickReplyButtonSelector = selector<QuickReplyButtonComponent[]>
   }
 })
 
-export const enabledQuickReplyButtonSelector = selector<QuickReplyButtonComponent[]>({
-  key: 'enabledQuickReplyButtonSelector',
-  get: ({ get }) => {
-    const buttonsComponent = get(buttonsAtom)
-
-    return buttonsComponent?.reply?.filter(btn => btn.enabled) || defaultValueQuickReplyButtons.filter(btn => btn.enabled)
-  }
-})
-
 export const quickReplyButtonSelector = selectorFamily<QuickReplyButtonComponent, QuickReplyButtonIndex>({
   key: 'quickReplyButtonSelector',
   get: (order) => ({ get }) => {
@@ -91,11 +79,56 @@ export const quickReplyButtonSelector = selectorFamily<QuickReplyButtonComponent
       if (selectedButton) {
         set(buttonsAtom, (prev) => {
           let newReplyButtonState = prev.reply ? [...(prev.reply)] : [...defaultValueQuickReplyButtons]
-          newReplyButtonState[order] = quickReplyButton
+          newReplyButtonState[order] = {...quickReplyButton, text: quickReplyButton.text.substring(0, 20)}
 
           return {
             ...prev,
             reply: [...newReplyButtonState]
+          }
+        })
+      } else {
+        set(buttonsAtom, prev => prev)  
+      }
+    }
+
+    return
+  }
+})
+
+// ---------------------------------- //
+
+export const allCTAButtonSelector = selector<CTAButtonComponent[]>({
+  key: 'allCTAButtonSelector',
+  get: ({ get }) => {
+    const buttonsComponent = get(buttonsAtom)
+
+    return buttonsComponent?.cta || defaultValueCTAButtons
+  }
+})
+
+export const ctaButtonSelector = selectorFamily<CTAButtonComponent, CTAButtonIndex>({
+  key: 'ctaButtonSelector',
+  get: (order) => ({ get }) => {
+    const buttonsComponent = get(buttonsAtom)
+
+    return buttonsComponent.cta?.[order] || defaultValueCTAButtons[2]
+  },
+  set: (order) => ({ set, get }, ctaButton) => {
+    if(order < 0 || order > 2) return // not valid button index range
+
+    if (!(ctaButton instanceof DefaultValue)) {
+      const buttonsComponent = get(buttonsAtom)
+  
+      const selectedButton = buttonsComponent?.cta?.[order]
+
+      if (selectedButton) {
+        set(buttonsAtom, (prev) => {
+          let newCTAButtonState = prev.cta ? [...(prev.cta)] : [...defaultValueCTAButtons]
+          newCTAButtonState[order] = {...ctaButton, text: ctaButton.text.substring(0, 20)}
+
+          return {
+            ...prev,
+            cta: [...newCTAButtonState]
           }
         })
       } else {

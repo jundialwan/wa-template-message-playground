@@ -1,10 +1,11 @@
 import { FC } from 'react'
 import { useRecoilValue } from 'recoil'
 import { normalizedBodyTextSelector, renderedBodyTextSelector } from '../Recoil/bodyText'
-import { allQuickReplyButtonSelector, buttonsTypeSelector, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons'
+import { allCTAButtonSelector, allQuickReplyButtonSelector, buttonsTypeSelector, CTAButtonIndex, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons'
 import { normalizedFooterTextSelector } from '../Recoil/footerText'
 import { headerTextSelector } from '../Recoil/header'
 import { classNames } from '../util'
+import { PhoneIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 
 const TemplateMessagePreview: FC = () => {
   const headerText = useRecoilValue(headerTextSelector)
@@ -21,6 +22,17 @@ const TemplateMessagePreview: FC = () => {
         <div className="float-none text-right">
           <span className="text-gray-400 text-xs">10:10</span>
         </div>
+
+        {
+          buttonType === 'cta' ?
+            <>
+              <div className="border-t my-[2px]"></div>
+      
+              <CTAButton order={0} />
+              <CTAButton order={1} />
+            </>
+          : null
+        }
       </div>
       {
         buttonType === 'reply' ?
@@ -51,4 +63,21 @@ const QuickReplyButton: FC<{ order: QuickReplyButtonIndex }> = ({ order }) => {
   } else {
     return null
   }
+}
+
+const CTAButton: FC<{ order: CTAButtonIndex }> = ({ order }) => {
+  const allButtons = useRecoilValue(allCTAButtonSelector)
+  const thisButton = allButtons[order]
+
+  if (thisButton.enabled) {
+    return (
+      <div className="font-sans text-base text-center text-[#00A5F4] py-1 flex flex-row gap-1 items-center justify-center">
+        {thisButton.type === 'call-phone' ? <PhoneIcon /> : <ExternalLinkIcon />}
+        <span>{thisButton.text}</span>
+      </div>
+    )
+  } else {
+    return null
+  }
+
 }

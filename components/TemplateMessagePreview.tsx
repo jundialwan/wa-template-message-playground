@@ -1,13 +1,16 @@
+import 'react-aspect-ratio/aspect-ratio.css'
 import { FC } from 'react'
 import { useRecoilValue } from 'recoil'
 import { normalizedBodyTextSelector, renderedBodyTextSelector } from '../Recoil/bodyText'
 import { allCTAButtonSelector, allQuickReplyButtonSelector, buttonsTypeSelector, CTAButtonIndex, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons'
 import { normalizedFooterTextSelector } from '../Recoil/footerText'
-import { headerTextSelector } from '../Recoil/header'
+import { headerTextSelector, headerTypeSelector } from '../Recoil/header'
 import { classNames } from '../util'
 import { PhoneIcon, ExternalLinkIcon } from '@chakra-ui/icons'
+import AspectRatio from 'react-aspect-ratio'
 
 const TemplateMessagePreview: FC = () => {
+  const headerType = useRecoilValue(headerTypeSelector)
   const headerText = useRecoilValue(headerTextSelector)
   const bodyText = useRecoilValue(renderedBodyTextSelector)
   const footerText = useRecoilValue(normalizedFooterTextSelector)
@@ -15,18 +18,31 @@ const TemplateMessagePreview: FC = () => {
 
   return (
     <>
-      <div className="w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-2 py-1 text-black font-normal font-sans">
-        <div className="font-bold">{headerText}</div>
-        <div className="whitespace-pre-line	my-[6px]" dangerouslySetInnerHTML={{__html: bodyText}}></div>
-        <div className="text-gray-600 text-xs">{footerText}</div>
-        <div className="float-none text-right">
-          <span className="text-gray-400 text-xs">10:10</span>
+      <div className="relative w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans">
+        {headerType === 'text' ? <div className="font-bold px-[4px]">{headerText}</div> : null}
+        {headerType === 'image' || headerType === 'video' ?
+          <AspectRatio ratio="16/9">
+            <div className="w-full bg-gray-300 h-6 rounded-md"></div>
+          </AspectRatio>
+        : null}
+        {headerType === 'doc' ?
+          <AspectRatio ratio="4/1">
+            <div className="w-full bg-gray-300 h-6 rounded-md"></div>
+          </AspectRatio>
+        : null}
+
+        <div className="relative px-[4px] pb-2">
+          <div className="whitespace-pre-line	my-[6px]" dangerouslySetInnerHTML={{__html: bodyText}}></div>
+          <div className="text-gray-600 text-xs">{footerText}</div>
+          <div className="absolute bottom-0 right-[4px] text-right">
+            <span className="text-gray-400 text-xs">10:10</span>
+          </div>
         </div>
 
         {
           buttonType === 'cta' ?
             <>
-              <div className="border-t my-[2px]"></div>
+              <div className="border-t mx-[6px] my-[2px]"></div>
       
               <CTAButton order={0} />
               <CTAButton order={1} />

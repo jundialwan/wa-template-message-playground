@@ -3,13 +3,7 @@ import { Grid, GridItem, Radio, RadioGroup, Stack } from "@chakra-ui/react"
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import React, { FC, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import styled from 'styled-components'
-import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
-import { bodyTextAtom, bodyTextLengthSelector, normalizedBodyTextSelector } from '../Recoil/bodyText'
-import { footerTextAtom, footerTextLengthSelector, footerTextSelector, normalizedFooterTextSelector } from '../Recoil/footerText'
-import RadioButtonItem from '../components/RadioButtonItem'
+import React from 'react'
 import FooterForm from '../components/FooterForm'
 import BodyForm from '../components/BodyForm'
 import TemplateMessagePreview from '../components/TemplateMessagePreview'
@@ -29,13 +23,13 @@ const Home: NextPage = () => {
       <div className="flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2 font-semibold text-black">
         WhatsApp Template Message Playground
       </div>
-      <div className="grid md:grid-cols-6 gap-3 grid-cols-1 h-full text-sm">
-        <div className="col-span-1 border-solid border-1 shadow-sm rounded-sm bg-white md:h-full p-2">
+      <div className="grid md:grid-cols-12 gap-3 grid-cols-1 h-full text-sm">
+        <div className="col-span-2 border-solid border-1 shadow-sm rounded-sm bg-white md:h-full p-2">
           <SectionHeading title="Template Examples" className="mb-2" />
           
           <div className="rounded-sm bg-white p-1 pl-2 hover:bg-gray-100 cursor-pointer">Testing</div>
         </div>
-        <div className="col-span-3 flex flex-col gap-1 overflow-auto">
+        <div className="col-span-7 flex flex-col gap-1 overflow-auto">
           
           <div className="flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2">
             <SectionHeading title="Header (optional)" />
@@ -69,12 +63,14 @@ const Home: NextPage = () => {
           </div>
           
         </div>
-        <div className="col-span-2 flex flex-col md:h-full gap-3">
+        <div className="col-span-3 flex flex-col md:h-full gap-3">
           <PreviewComponent>
             <SectionHeading title="Preview" />
             <SectionSubtitle subtitle="Edit template message and input parameter on the left" />
 
-            <TemplateMessagePreview />
+            <div className="px-16">
+              <TemplateMessagePreview />
+            </div>
           </PreviewComponent>
         </div>
       </div>

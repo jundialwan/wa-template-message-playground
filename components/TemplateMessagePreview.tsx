@@ -1,6 +1,8 @@
 import 'react-aspect-ratio/aspect-ratio.css'
 import { FC } from 'react'
 import { useRecoilValue } from 'recoil'
+import { Icon } from '@chakra-ui/react'
+import { BsImage, BsPlay, BsFileEarmarkText } from 'react-icons/bs'
 import { normalizedBodyTextSelector, renderedBodyTextSelector } from '../Recoil/bodyText'
 import { allCTAButtonSelector, allQuickReplyButtonSelector, buttonsTypeSelector, CTAButtonIndex, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons'
 import { normalizedFooterTextSelector } from '../Recoil/footerText'
@@ -8,6 +10,15 @@ import { headerTextSelector, headerTypeSelector } from '../Recoil/header'
 import { classNames } from '../util'
 import { PhoneIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import AspectRatio from 'react-aspect-ratio'
+import { IconType } from 'react-icons'
+
+const HeaderIllustration: FC<{ icon?: IconType, ratio: string, iconBoxSize: string }> = ({ icon, ratio, iconBoxSize }) => (
+  <AspectRatio ratio={ratio}>
+    <div className="w-full bg-gray-300 h-6 rounded-md font-bold text-gray-400 text-center items-center justify-center flex text-xl">
+      {icon ? <Icon as={icon} boxSize={iconBoxSize} /> : null}
+    </div>
+  </AspectRatio>
+) 
 
 const TemplateMessagePreview: FC = () => {
   const headerType = useRecoilValue(headerTypeSelector)
@@ -20,19 +31,20 @@ const TemplateMessagePreview: FC = () => {
     <>
       <div className="relative w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans">
         {headerType === 'text' ? <div className="font-bold px-[4px]">{headerText}</div> : null}
-        {headerType === 'image' || headerType === 'video' ?
-          <AspectRatio ratio="16/9">
-            <div className="w-full bg-gray-300 h-6 rounded-md"></div>
-          </AspectRatio>
+        {headerType === 'image' ?
+          <HeaderIllustration ratio="16/9" iconBoxSize="16" icon={BsImage} />
+        : null}
+        {headerType === 'video' ?
+          <HeaderIllustration ratio="16/9" iconBoxSize="16" icon={BsPlay} />
         : null}
         {headerType === 'doc' ?
-          <AspectRatio ratio="4/1">
-            <div className="w-full bg-gray-300 h-6 rounded-md"></div>
-          </AspectRatio>
+          <HeaderIllustration ratio="4/1" iconBoxSize="8" icon={BsFileEarmarkText} />
         : null}
 
         <div className="relative px-[4px] pb-2">
-          <div className="whitespace-pre-line	my-[6px]" dangerouslySetInnerHTML={{__html: bodyText}}></div>
+          <div className="whitespace-pre-line	my-[6px]">
+            {bodyText ? <div dangerouslySetInnerHTML={{__html: bodyText}}></div> : <div>&nbsp;</div>}
+          </div>
           <div className="text-gray-600 text-xs">{footerText}</div>
           <div className="absolute bottom-0 right-[4px] text-right">
             <span className="text-gray-400 text-xs">10:10</span>

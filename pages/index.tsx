@@ -23,13 +23,13 @@ const Home: NextPage = () => {
       <div className="flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2 font-semibold text-black">
         WhatsApp Template Message Playground
       </div>
-      <div className="grid md:grid-cols-12 gap-3 grid-cols-1 h-full text-sm">
+      <div className="grid md:grid-cols-12 gap-3 grid-cols-1 text-sm" style={{ height: 'calc(100vh - 72px)' }}>
         <div className="col-span-2 border-solid border-1 shadow-sm rounded-sm bg-white md:h-full p-2">
           <SectionHeading title="Template Examples" className="mb-2" />
           
           <div className="rounded-sm bg-white p-1 pl-2 hover:bg-gray-100 cursor-pointer">Testing</div>
         </div>
-        <div className="col-span-7 flex flex-col gap-1 overflow-auto">
+        <div className="col-span-7 flex flex-col md:h-full gap-1 overflow-auto">
           
           <div className="flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2">
             <SectionHeading title="Header (optional)" />
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
             <SectionHeading title="Preview" />
             <SectionSubtitle subtitle="Edit template message and input parameter on the left" />
 
-            <div className="px-16">
+            <div className="md:px-8 2xl:px-16">
               <TemplateMessagePreview />
             </div>
           </PreviewComponent>

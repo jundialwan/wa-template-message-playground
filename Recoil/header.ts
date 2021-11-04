@@ -1,7 +1,7 @@
 import { atom, DefaultValue, selector } from 'recoil';
 
-type HeaderType = 'none' | 'image' | 'video' | 'document' | 'text';
-type HeaderComponent = {
+export type HeaderType = 'none' | 'image' | 'video' | 'document' | 'text';
+export type HeaderComponent = {
   type: HeaderType;
   image?: {
     path: string;
@@ -16,7 +16,7 @@ type HeaderComponent = {
   text?: string;
 };
 
-const headerAtom = atom<HeaderComponent>({
+export const headerAtom = atom<HeaderComponent>({
   key: 'header',
   default: {
     type: 'none',
@@ -51,9 +51,6 @@ export const headerImageSelector = selector<string>({
     if (!(newHeaderImagePath instanceof DefaultValue)) {
       set(headerAtom, (prev) => ({
         ...prev,
-        text: undefined,
-        video: undefined,
-        document: undefined,
         image: {
           ...prev.image,
           path: newHeaderImagePath,
@@ -75,9 +72,7 @@ export const headerVideoSelector = selector<string>({
     if (!(newHeaderVideoPath instanceof DefaultValue)) {
       set(headerAtom, (prev) => ({
         ...prev,
-        image: undefined,
-        text: undefined,
-        document: undefined,
+
         video: {
           ...prev.video,
           path: newHeaderVideoPath,
@@ -117,9 +112,7 @@ export const headerDocumentsNameSelector = selector<string>({
     if (!(newHeaderDocFilename instanceof DefaultValue)) {
       set(headerAtom, (prev) => ({
         ...prev,
-        image: undefined,
-        video: undefined,
-        text: undefined,
+
         document: {
           ...prev.document,
           filename: newHeaderDocFilename,
@@ -140,9 +133,7 @@ export const headerDocumentsSelector = selector<string>({
     if (!(newHeaderDocFile instanceof DefaultValue)) {
       set(headerAtom, (prev) => ({
         ...prev,
-        image: undefined,
-        video: undefined,
-        text: undefined,
+
         document: {
           ...prev.document,
           path: newHeaderDocFile,

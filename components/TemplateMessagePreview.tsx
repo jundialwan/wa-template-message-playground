@@ -27,6 +27,7 @@ import { PhoneIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import AspectRatio from 'react-aspect-ratio';
 import { IconType } from 'react-icons';
 import VideoPreview from './TemplateMessage/VideoPreview';
+import styled from 'styled-components';
 
 export const HeaderIllustration: FC<{
   icon?: IconType;
@@ -40,7 +41,7 @@ export const HeaderIllustration: FC<{
   </AspectRatio>
 );
 
-const ImagePreview: FC<{ headerPathImage?: string }> = ({
+export const ImagePreview: FC<{ headerPathImage?: string }> = ({
   headerPathImage,
 }) => {
   if (headerPathImage && headerPathImage?.length > 1) {
@@ -72,7 +73,7 @@ const TemplateMessagePreview: FC = () => {
 
   return (
     <>
-      <div className='relative w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
+      <ChatBot className='relative w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
         {headerType === 'text' ? (
           <div className='font-bold px-[4px]'>{headerText}</div>
         ) : null}
@@ -112,7 +113,7 @@ const TemplateMessagePreview: FC = () => {
             <CTAButton order={1} />
           </>
         ) : null}
-      </div>
+      </ChatBot>
       {buttonType === 'reply' ? (
         <div className='grid grid-cols-2 gap-[2px] mt-[2px]'>
           <QuickReplyButton order={0} />
@@ -126,7 +127,9 @@ const TemplateMessagePreview: FC = () => {
 
 export default TemplateMessagePreview;
 
-const QuickReplyButton: FC<{ order: QuickReplyButtonIndex }> = ({ order }) => {
+export const QuickReplyButton: FC<{ order: QuickReplyButtonIndex }> = ({
+  order,
+}) => {
   const allButtons = useRecoilValue(allQuickReplyButtonSelector);
   const thisButton = allButtons[order];
 
@@ -142,7 +145,7 @@ const QuickReplyButton: FC<{ order: QuickReplyButtonIndex }> = ({ order }) => {
   }
 };
 
-const CTAButton: FC<{ order: CTAButtonIndex }> = ({ order }) => {
+export const CTAButton: FC<{ order: CTAButtonIndex }> = ({ order }) => {
   const allButtons = useRecoilValue(allCTAButtonSelector);
   const thisButton = allButtons[order];
 
@@ -161,3 +164,17 @@ const CTAButton: FC<{ order: CTAButtonIndex }> = ({ order }) => {
     return null;
   }
 };
+
+export const ChatBot = styled.div`
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 1px;
+    left: -9px;
+    width: 12px;
+    height: 12px;
+    background-image: url('/ornament/chat-bot.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+`;

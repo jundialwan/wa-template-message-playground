@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useRecoilState } from 'recoil'
-import { headerTextSelector } from '../Recoil/header'
+import { headerTextSelector } from '../../Recoil/header'
 
 const HeaderTextInput: FC<{ value?: string }> = ({ value }) => {
   const [headerText, setHeaderText] = useRecoilState(headerTextSelector)

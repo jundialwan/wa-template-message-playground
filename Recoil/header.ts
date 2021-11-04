@@ -1,61 +1,154 @@
-import { atom, DefaultValue, selector } from 'recoil'
+import { atom, DefaultValue, selector } from 'recoil';
 
-type HeaderType = 'none' | 'image' | 'video' | 'doc' | 'text'
+type HeaderType = 'none' | 'image' | 'video' | 'document' | 'text';
 type HeaderComponent = {
-  type: HeaderType,
+  type: HeaderType;
   image?: {
-    path: string
-  },
+    path: string;
+  };
   video?: {
-    path: string
-  },
-  doc?: {
-    path: string,
-    filename: string
-  },
-  text?: string
-}
+    path: string;
+  };
+  document?: {
+    path: string;
+    filename: string;
+  };
+  text?: string;
+};
 
 const headerAtom = atom<HeaderComponent>({
   key: 'header',
   default: {
-    type: 'none'
-  }
-})
+    type: 'none',
+  },
+});
 
 export const headerTypeSelector = selector<HeaderType>({
   key: 'headerTypeSelector',
   get: ({ get }) => {
-    const headerComponent = get(headerAtom)
-    return headerComponent.type
+    const headerComponent = get(headerAtom);
+    return headerComponent.type;
   },
   set: ({ set }, newButtonType) => {
     if (!(newButtonType instanceof DefaultValue)) {
       set(headerAtom, (prev) => ({
         ...prev,
-        type: newButtonType
-      }))
+        type: newButtonType,
+      }));
     }
 
-    return
-  }
-})
+    return;
+  },
+});
+
+export const headerImageSelector = selector<string>({
+  key: 'headerImageSelector',
+  get: ({ get }) => {
+    const headerComponent = get(headerAtom);
+    return headerComponent?.image?.path || ' ';
+  },
+  set: ({ set }, newHeaderImagePath) => {
+    if (!(newHeaderImagePath instanceof DefaultValue)) {
+      set(headerAtom, (prev) => ({
+        ...prev,
+        text: undefined,
+        video: undefined,
+        document: undefined,
+        image: {
+          ...prev.image,
+          path: newHeaderImagePath,
+        },
+      }));
+    }
+
+    return;
+  },
+});
+
+export const headerVideoSelector = selector<string>({
+  key: 'headerVideoSelector',
+  get: ({ get }) => {
+    const headerComponent = get(headerAtom);
+    return headerComponent?.video?.path || ' ';
+  },
+  set: ({ set }, newHeaderVideoPath) => {
+    if (!(newHeaderVideoPath instanceof DefaultValue)) {
+      set(headerAtom, (prev) => ({
+        ...prev,
+        image: undefined,
+        text: undefined,
+        document: undefined,
+        video: {
+          ...prev.video,
+          path: newHeaderVideoPath,
+        },
+      }));
+    }
+    return;
+  },
+});
 
 export const headerTextSelector = selector<string>({
   key: 'headerTextSelector',
   get: ({ get }) => {
-    const headerComponent = get(headerAtom)
+    const headerComponent = get(headerAtom);
 
-    return headerComponent.text || ''
+    return headerComponent.text || '';
   },
   set: ({ set }, newHeaderText) => {
     if (!(newHeaderText instanceof DefaultValue)) {
       set(headerAtom, (prev) => ({
         ...prev,
-        text: newHeaderText.substring(0, 60)
-      }))
+        text: newHeaderText.substring(0, 60),
+      }));
     }
 
-    return
-  }
-})
+    return;
+  },
+});
+
+export const headerDocumentsNameSelector = selector<string>({
+  key: 'headerDocumentsNameSelector',
+  get: ({ get }) => {
+    const headerComponent = get(headerAtom);
+    return headerComponent?.document?.filename || ' ';
+  },
+  set: ({ set }, newHeaderDocFilename) => {
+    if (!(newHeaderDocFilename instanceof DefaultValue)) {
+      set(headerAtom, (prev) => ({
+        ...prev,
+        image: undefined,
+        video: undefined,
+        text: undefined,
+        document: {
+          ...prev.document,
+          filename: newHeaderDocFilename,
+        } as HeaderComponent['document'],
+      }));
+    }
+
+    return;
+  },
+});
+export const headerDocumentsSelector = selector<string>({
+  key: 'headerDocumentsSelector',
+  get: ({ get }) => {
+    const headerComponent = get(headerAtom);
+    return headerComponent?.document?.path || ' ';
+  },
+  set: ({ set }, newHeaderDocFile) => {
+    if (!(newHeaderDocFile instanceof DefaultValue)) {
+      set(headerAtom, (prev) => ({
+        ...prev,
+        image: undefined,
+        video: undefined,
+        text: undefined,
+        document: {
+          ...prev.document,
+          path: newHeaderDocFile,
+        } as HeaderComponent['document'],
+      }));
+    }
+    return;
+  },
+});

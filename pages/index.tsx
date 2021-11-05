@@ -11,13 +11,13 @@ import {
 } from '../components/LogiclessComponents';
 import HeaderForm from '../components/Header/HeaderForm';
 import ButtonsForm from '../components/ButtonsForm';
-import SampleForm from '../components/SampleForm';
 import SenderForm from '../components/Sender/SenderForm';
 import { useRecoilValue } from 'recoil';
 import { listMessageAtom } from '../Recoil/listMessage';
 import SubmitForm from '../components/SubmitForm';
 import TemplateEditor from '../components/TemplateEditor';
 import WhatsAppPreview from '../components/WhatsAppPreview';
+import InteractiveForm from '../components/InteractiveForm';
 
 /**
  * Home
@@ -75,8 +75,10 @@ const Home: NextPage = () => {
             <ButtonsForm />
           </div>
           <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
-            <SectionHeading title='Input Sample Parameter' />
-            <SectionSubtitle subtitle='Add header and body parameter sample of your template message. See the preview on the right.' />
+            <SectionHeading title='Interactive Message (optional)' />
+            <SectionSubtitle subtitle="Create interactive message that let customers respond to your message. Available: 'List Message' and 'Reply Button' button." />
+
+            <InteractiveForm />
           </div>
           <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
             <SectionHeading title='Submit Your Chat Form' />

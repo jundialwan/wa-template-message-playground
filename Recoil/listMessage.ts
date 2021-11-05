@@ -29,22 +29,20 @@ export const listMessageAtom = atom<any>({
   default: [],
 });
 
-// export const listMessageSelector = selector<ListMessage>({
-//   key: 'listMessageSelector',
-//   get: ({ get }) => {
-//     const ListMessage = get(listMessageAtom);
-//     return ListMessage;
-//   },
-//   set: ({ set }, newButtonType) => {
-//     if (!(newButtonType instanceof DefaultValue)) {
-//       set(listMessageAtom, (prev) => ({
-//         ...prev,
-//         id: newButtonType.id + 1,
-//         sender: newButtonType.sender,
-//         type: newButtonType.type,
-//       }));
-//     }
+export const listMessageUserTypeSelector = selector<SenderType>({
+  key: 'buttonsTypeSelector',
+  get: ({ get }) => {
+    const listMessageComponent = get(listMessageAtom);
+    return listMessageComponent.sender;
+  },
+  set: ({ set }, newButtonType) => {
+    if (!(newButtonType instanceof DefaultValue)) {
+      set(listMessageAtom, (prev) => ({
+        ...prev,
+        type: newButtonType,
+      }));
+    }
 
-//     return;
-//   },
-// });
+    return;
+  },
+});

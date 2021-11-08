@@ -26,7 +26,7 @@ const SubmitForm: FC = () => {
     setListMessage((oldListMessage: any) => [
       ...oldListMessage,
       {
-        id: getId(),
+        id: oldListMessage.length + 1,
         sender: userType,
         header: {
           type: headerType,
@@ -58,18 +58,18 @@ const SubmitForm: FC = () => {
   };
 
   const onSubmit = () => {
-    console.log('SubmitForm');
-    console.log('userType', userType);
-    console.log('headerType', headerType);
-    console.log('headerText', headerText);
-    console.log('bodyText', bodyText);
-    console.log('footerText', footerText);
-    console.log('buttonType', buttonType);
-    console.log('messageId', messageId);
-    console.log('listMessage', listMessage);
+    // console.log('SubmitForm');
+    // console.log('userType', userType);
+    // console.log('headerType', headerType);
+    // console.log('headerText', headerText);
+    // console.log('bodyText', bodyText);
+    // console.log('footerText', footerText);
+    // console.log('buttonType', buttonType);
+    // console.log('messageId', messageId);
+    // console.log('listMessage', listMessage);
     addListMessage();
-    console.log('addListMessage', listMessage);
-    console.log('===========================');
+    // console.log('addListMessage', listMessage);
+    // console.log('===========================');
   };
 
   return (

@@ -1,11 +1,16 @@
-import React, { FC } from 'react';
-import { useRecoilState } from 'recoil';
-import { senderTypeSelector } from '../../../Recoil/senderText';
+import React, { ChangeEventHandler, FC, useState } from 'react';
 import RadioButtonItem from '../../RadioButtonItem';
 
-const SenderForm: FC = () => {
-  const [senderType, setSenderType] = useRecoilState(senderTypeSelector);
-  const onSenderTypeChange = (e: any) => setSenderType(e.target.value);
+type SenderFormProps = {
+  senderType: string;
+  onSenderTypeChange: ChangeEventHandler<HTMLInputElement>;
+};
+
+const SenderForm: FC<SenderFormProps> = ({
+  senderType,
+  onSenderTypeChange,
+}) => {
+  console.log('senderType', senderType);
   return (
     <>
       <div className='flex flex-row'>

@@ -17,22 +17,15 @@ const SenderForm: FC<SenderFormProps> = ({
         <RadioButtonItem
           isChecked={senderType === 'bot'}
           value='bot'
-          id='bot-sender'
+          id='bot-sender-edit'
           label='Bot'
           onChange={onSenderTypeChange}
         />
         <RadioButtonItem
           isChecked={senderType === 'user'}
           value='user'
-          id='user-sender'
+          id='user-sender-edit'
           label='User'
-          onChange={onSenderTypeChange}
-        />
-        <RadioButtonItem
-          isChecked={senderType === 'none'}
-          value='none'
-          id='hidden-sender'
-          label='Hidden Message'
           onChange={onSenderTypeChange}
         />
       </div>

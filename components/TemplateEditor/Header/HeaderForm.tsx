@@ -9,7 +9,8 @@ const HeaderForm: FC<{
   headerType: string;
   messageId: number;
   onHeaderTypeChange: ChangeEventHandler<HTMLInputElement>;
-}> = ({ headerType, onHeaderTypeChange, messageId }) => {
+  headerText: string;
+}> = ({ headerType, onHeaderTypeChange, messageId, headerText }) => {
   return (
     <>
       <div className='flex flex-row'>
@@ -23,35 +24,37 @@ const HeaderForm: FC<{
         <RadioButtonItem
           isChecked={headerType === 'text'}
           value='text'
-          id='text'
+          id='text-edit'
           label='Text'
           onChange={onHeaderTypeChange}
         />
         <RadioButtonItem
           isChecked={headerType === 'image'}
           value='image'
-          id='image'
+          id='image-edit'
           label='Image'
           onChange={onHeaderTypeChange}
         />
         <RadioButtonItem
           isChecked={headerType === 'video'}
           value='video'
-          id='video'
+          id='video-edit'
           label='Video'
           onChange={onHeaderTypeChange}
         />
         <RadioButtonItem
           isChecked={headerType === 'document'}
           value='document'
-          id='document'
+          id='document-edit'
           label='Document'
           onChange={onHeaderTypeChange}
         />
       </div>
 
-      {/* {headerType === 'text' ? <HeaderTextInput messageId={messageId} /> : null}
-      {headerType === 'image' ? <HeaderImageInput /> : null}
+      {headerType === 'text' ? (
+        <HeaderTextInput messageId={messageId} headerText={headerText} />
+      ) : null}
+      {/* {headerType === 'image' ? <HeaderImageInput /> : null}
       {headerType === 'video' ? <HeaderVideoInput /> : null} */}
     </>
   );

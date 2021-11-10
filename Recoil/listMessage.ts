@@ -28,21 +28,3 @@ export const listMessageAtom = atom<any>({
   key: 'listMessage',
   default: [],
 });
-
-// export const listMessageUserTypeSelector = selector<SenderType>({
-//   key: 'buttonsTypeSelector',
-//   get: ({ get }) => {
-//     const listMessageComponent = get(listMessageAtom);
-//     return listMessageComponent.sender;
-//   },
-//   set: ({ set }, newButtonType) => {
-//     if (!(newButtonType instanceof DefaultValue)) {
-//       set(listMessageAtom, (prev) => ({
-//         ...prev,
-//         type: newButtonType,
-//       }));
-//     }
-
-//     return;
-//   },
-// });

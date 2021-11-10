@@ -68,17 +68,14 @@ const SubmitForm: FC = () => {
     // console.log('messageId', messageId);
     // console.log('listMessage', listMessage);
     addListMessage();
-    // console.log('addListMessage', listMessage);
-    // console.log('===========================');
+    console.log('===========================');
+    console.log('addListMessage', listMessage);
+    console.log('===========================');
   };
 
   return (
     <div className='mt-4'>
-      <button
-        type='button'
-        onClick={onSubmit}
-        className='py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition-all text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  opacity-70  rounded-lg '
-      >
+      <button type='button' onClick={onSubmit} className='py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition-all text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  opacity-70  rounded-lg '>
         Submit
       </button>
     </div>

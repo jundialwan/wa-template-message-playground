@@ -10,7 +10,9 @@ const HeaderForm: FC<{
   messageId: number;
   onHeaderTypeChange: ChangeEventHandler<HTMLInputElement>;
   headerText: string;
-}> = ({ headerType, onHeaderTypeChange, messageId, headerText }) => {
+  headerImagePath: string;
+  headerVideoPath: string;
+}> = ({ headerType, onHeaderTypeChange, messageId, headerText, headerImagePath, headerVideoPath }) => {
   return (
     <>
       <div className='flex flex-row'>
@@ -22,8 +24,8 @@ const HeaderForm: FC<{
       </div>
 
       {headerType === 'text' ? <HeaderTextInput messageId={messageId} headerText={headerText} /> : null}
-      {/* {headerType === 'image' ? <HeaderImageInput /> : null}
-      {headerType === 'video' ? <HeaderVideoInput /> : null} */}
+      {headerType === 'image' ? <HeaderImageInput messageId={messageId} headerImagePath={headerImagePath} /> : null}
+      {headerType === 'video' ? <HeaderVideoInput messageId={messageId} headerVideoPath={headerVideoPath} /> : null}
     </>
   );
 };

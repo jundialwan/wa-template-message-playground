@@ -109,7 +109,7 @@ const TemplateEditor: FC = () => {
                 <div className='flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Header (optional)' />
                   <SectionSubtitle subtitle="Choose which type of media you'll use for this header" />
-                  <HeaderForm headerType={message.header.type} headerText={message.header.text} messageId={message.id} onHeaderTypeChange={(event) => handleHeaderTypeChange(event, message.id)} />
+                  <HeaderForm headerType={message.header.type} headerText={message.header.text} messageId={message.id} onHeaderTypeChange={(event) => handleHeaderTypeChange(event, message.id)} headerImagePath={message.header.image.path} headerVideoPath={message.header.video.path} />
                 </div>
                 <div className='flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Body' />

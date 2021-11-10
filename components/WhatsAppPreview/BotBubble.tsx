@@ -3,7 +3,9 @@ import React, { FC, useEffect } from 'react';
 import { BsFileEarmarkText } from 'react-icons/bs';
 import { CTAButtonIndex } from '../../Recoil/buttons';
 import VideoPreview from '../TemplateMessage/VideoPreview';
-import { ChatBot, HeaderIllustration, ImagePreview, QuickReplyButton } from '../TemplateMessagePreview';
+import { ChatBot, HeaderIllustration, QuickReplyButton } from '../TemplateMessagePreview';
+
+import ImagePreview from './Header/ImagePreview';
 
 const BotBubble: FC<{ message: any }> = ({ message }) => {
   console.log('Message Bot', message);

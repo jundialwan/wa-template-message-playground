@@ -34,8 +34,8 @@ const PreviewComponentContainer = styled.div`
 
 export const PreviewComponent: FC = ({ children }) => {
   return (
-    <PreviewComponentContainer className='relative flex-auto border-solid border-1 shadow-sm rounded-sm bg-[#e5ddd5]'>
-      <div className='flex flex-col'>
+    <PreviewComponentContainer className='relative flex-auto border-solid border-1 shadow-sm rounded-sm bg-[#e5ddd5] '>
+      <div className='flex flex-col overflow-y-auto h-full'>
         <div className='w-full flex justify-end items-center bg-whatsapp-500 py-1 px-2 space-x-1'>
           <svg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path fillRule='evenodd' clipRule='evenodd' d='M0.977371 4.01593C3.48822 2.12256 6.61301 1 10 1C13.387 1 16.5118 2.12256 19.0226 4.01593L10 15L0.977371 4.01593Z' fill='white' />
@@ -56,12 +56,14 @@ export const PreviewComponent: FC = ({ children }) => {
             <path fillRule='evenodd' clipRule='evenodd' d='M6 8C7.1 8 8 7.1 8 6C8 4.9 7.1 4 6 4C4.9 4 4 4.9 4 6C4 7.1 4.9 8 6 8ZM6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM6 16C4.9 16 4 16.9 4 18C4 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16Z' fill='white' />
           </svg>
         </div>
-        <div className='flex w-full'>
-          <label htmlFor='' className='my-3 mx-auto bg-ocean-100 shadow-day-bubble px-3  py-2 text-gray-600 uppercase font-semibold rounded-md'>
-            Today
-          </label>
+        <div className='h-full overflow-y-auto relative max-h-[780px]'>
+          <div className='flex w-full'>
+            <label htmlFor='' className='my-3 mx-auto bg-ocean-100 shadow-day-bubble px-3  py-2 text-gray-600 uppercase font-semibold rounded-md'>
+              Today
+            </label>
+          </div>
+          <div className='relative p-2 h-auto'>{children}</div>
         </div>
-        <div className='relative p-2 h-full'>{children}</div>
       </div>
     </PreviewComponentContainer>
   );

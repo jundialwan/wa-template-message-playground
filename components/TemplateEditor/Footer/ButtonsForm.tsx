@@ -12,9 +12,9 @@ const ButtonsForm: FC<{ buttonType: string; onButtonTypeChange: ChangeEventHandl
   return (
     <>
       <div className='flex flex-row'>
-        <RadioButtonItem isChecked={buttonType === 'none'} value='none' id='no-button-edit' label='None' onChange={onButtonTypeChange} />
-        <RadioButtonItem isChecked={buttonType === 'cta'} value='cta' id='cta-edit' label='Call to Action' onChange={onButtonTypeChange} />
-        <RadioButtonItem isChecked={buttonType === 'reply'} value='reply' id='reply-edit' label='Quick Reply' onChange={onButtonTypeChange} />
+        <RadioButtonItem isChecked={buttonType === 'none'} value='none' id={'no-button-edit' + messageId} label='None' onChange={onButtonTypeChange} />
+        <RadioButtonItem isChecked={buttonType === 'cta'} value='cta' id={'cta-edit' + messageId} label='Call to Action' onChange={onButtonTypeChange} />
+        <RadioButtonItem isChecked={buttonType === 'reply'} value='reply' id={'reply-edit' + messageId} label='Quick Reply' onChange={onButtonTypeChange} />
       </div>
 
       {buttonType === 'cta' ? <CTAButtonsInput messageId={messageId} buttonCta={buttonCta} /> : null}
@@ -129,7 +129,7 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: 
               <span className='text-xs'>({buttonText.length}/20)</span>
             </div>
 
-            <input type='text' name={`cta-text-${order}`} id={`cta-text-${order}`} value={buttonText} onChange={(e) => handleTextChange(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+            <input type='text' name={`cta-text-${order}`} id={`cta-text-${order}` + messageId} value={buttonText} onChange={(e) => handleTextChange(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
           </div>
 
           <div className='flex flex-col'>
@@ -141,7 +141,7 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: 
               </span>
             </div>
 
-            <input type='text' name={`cta-context-${order}`} id={`cta-context-${order}`} value={buttonCta[order].type === 'call-phone' ? buttonCta[order].phone : buttonCta[order].url} onChange={(e) => handleCTAContext(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' disabled />
+            <input type='text' name={`cta-context-${order}`} id={`cta-context-${order}` + messageId} value={buttonCta[order].type === 'call-phone' ? buttonCta[order].phone : buttonCta[order].url} onChange={(e) => handleCTAContext(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' disabled />
           </div>
         </div>
       </div>
@@ -216,7 +216,7 @@ const QuickReplyButtonInput: FC<{ order: QuickReplyButtonIndex; messageId: numbe
   return (
     <div className='flex flex-row gap-1 items-center'>
       <Switch isDisabled={order === 0} isChecked={buttonSwitch} size='sm' colorScheme='teal' ringColor='#047857' onChange={(e) => handleToggleChange(e, messageId)} />
-      <input type='text' name={`reply-${order}`} id={`reply-${order}`} placeholder={`Reply button ${order + 1}`} value={buttonText} onChange={(e) => handleTextChange(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+      <input type='text' name={`reply-${order}`} id={`reply-${order}` + messageId} placeholder={`Reply button ${order + 1}`} value={buttonText} onChange={(e) => handleTextChange(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
       <span className='text-xs'>{buttonText.length}/20</span>
     </div>
   );

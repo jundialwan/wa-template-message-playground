@@ -19,8 +19,8 @@ const CompanyImage: FC = () => {
       <span>Header Image</span>
       {companyPathImage?.length > 1 ? (
         <div className='flex w-full items-start mt-4'>
-          <div className='w-7/12'>
-            <AspectRatio maxW='400px' ratio={4 / 3}>
+          <div className='w-24'>
+            <AspectRatio maxW='400px' ratio={1 / 1}>
               <img src={companyPathImage} alt='Image Bot' className='w-full h-full' />
             </AspectRatio>
           </div>

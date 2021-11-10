@@ -71,12 +71,12 @@ const Home: NextPage = () => {
 
               <ButtonsForm />
             </div>
-            {/* <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
+            <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
               <SectionHeading title='Interactive Message (optional)' />
               <SectionSubtitle subtitle="Create interactive message that let customers respond to your message. Available: 'List Message' and 'Reply Button' button." />
-  
+
               <InteractiveForm />
-            </div> */}
+            </div>
             <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
               <SectionHeading title='Submit Your Chat Form' />
               <SectionSubtitle subtitle='Remember to submit form ' />

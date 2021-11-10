@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import { ExternalLinkIcon, PhoneIcon } from '@chakra-ui/icons';
+import React, { FC, useEffect } from 'react';
 import { BsFileEarmarkText } from 'react-icons/bs';
+import { CTAButtonIndex } from '../../Recoil/buttons';
 import VideoPreview from '../TemplateMessage/VideoPreview';
-import { ChatBot, CTAButton, HeaderIllustration, ImagePreview, QuickReplyButton } from '../TemplateMessagePreview';
+import { ChatBot, HeaderIllustration, ImagePreview, QuickReplyButton } from '../TemplateMessagePreview';
 
 const BotBubble: FC<{ message: any }> = ({ message }) => {
   console.log('Message Bot', message);
@@ -9,6 +11,7 @@ const BotBubble: FC<{ message: any }> = ({ message }) => {
   const replaceItalic = replaceBold.replace(/\_(.*?)\_/g, (match: any, p1: any) => `<i>${p1}</i>`);
   const replaceStrike = replaceItalic.replace(/\~(.*?)\~/g, (match: any, p1: any) => `<strike>${p1}</strike>`);
   const replaceMono = replaceStrike.replace(/\`\`\`(.*?)\`\`\`/g, (match: any, p1: any) => `<span class="font-mono">${p1}</span>`);
+  useEffect(() => {}, [message]);
   return (
     <>
       <ChatBot className='relative w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
@@ -28,8 +31,8 @@ const BotBubble: FC<{ message: any }> = ({ message }) => {
           <>
             <div className='border-t mx-[6px] my-[2px]'></div>
 
-            <CTAButton order={0} />
-            <CTAButton order={1} />
+            <CTAButton order={0} message={message.footer.button.cta} />
+            <CTAButton order={1} message={message.footer.button.cta} />
           </>
         ) : null}
       </ChatBot>
@@ -45,3 +48,19 @@ const BotBubble: FC<{ message: any }> = ({ message }) => {
 };
 
 export default BotBubble;
+
+const CTAButton: FC<{ order: CTAButtonIndex; message: any }> = ({ order, message }) => {
+  const allButtons = message;
+  const thisButton = allButtons[order];
+
+  if (thisButton.enabled) {
+    return (
+      <div className='font-sans text-base text-center text-[#00A5F4] py-1 flex flex-row gap-1 items-center justify-center'>
+        {thisButton.type === 'call-phone' ? <PhoneIcon /> : <ExternalLinkIcon />}
+        <span>{thisButton.text}</span>
+      </div>
+    );
+  } else {
+    return null;
+  }
+};

@@ -84,7 +84,7 @@ const TemplateEditor: FC = () => {
       {listMessage.length > 0 &&
         listMessage.map((message: any, index: number) => {
           return (
-            <Accordion allowToggle key={index}>
+            <Accordion allowToggle key={index} allowMultiple={false}>
               <AccordionItem>
                 <h2>
                   <AccordionButton>
@@ -118,7 +118,7 @@ const TemplateEditor: FC = () => {
                   <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
                     <SectionHeading title='Buttons (optional)' />
                     <SectionSubtitle subtitle="Create buttons that let customers respond to your message. Available: 'Call to action' and 'Quick Reply' button." />
-                    <ButtonsForm buttonType={message.footer.button.type} onButtonTypeChange={(event) => handleFooterBtnTypeChange(event, message.id)} buttonCta={message.footer.button.cta} buttonReply={message.footer.button.reply} />
+                    <ButtonsForm buttonType={message.footer.button.type} onButtonTypeChange={(event) => handleFooterBtnTypeChange(event, message.id)} buttonCta={message.footer.button.cta} buttonReply={message.footer.button.reply} messageId={message.id} />
                   </div>
                 </AccordionPanel>
               </AccordionItem>

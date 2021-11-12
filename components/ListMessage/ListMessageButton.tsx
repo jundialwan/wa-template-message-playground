@@ -20,7 +20,7 @@ const ListMessageButton: FC = () => {
         </svg>
         <p className='text-sm ml-2'> List Message</p>
       </div>
-
+      <div className='bg-black bg-opacity-20 top-0 left-0 w absolute'></div>
       <Transition appear show={isShowMessage} className='absolute top-[30%] left-0 right-0 '>
         <Transition.Child enter='ease-out duration-300' enterFrom='opacity-0 scale-95' enterTo='opacity-100 scale-100' leave='ease-in duration-200' leaveFrom='opacity-100 scale-100' leaveTo='opacity-0 scale-95' as='div' className='bg-white rounded-tr-2xl rounded-tl-2xl w-full absolute max-h-[375px] left-0 right-0 z-20 px-[18px] py-[23px]'>
           <div className='flex flex-col h-full'>

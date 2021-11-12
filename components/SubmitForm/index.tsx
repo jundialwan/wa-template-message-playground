@@ -57,7 +57,7 @@ const SubmitForm: FC = () => {
         },
         interactive: {
           type: interactiveType.type,
-          allMessage: interactiveType?.listMessage,
+          listMessage: interactiveType?.listMessage,
           reply: interactiveType?.reply,
         },
       },

@@ -50,7 +50,7 @@ const BotBubble: FC<{ message: any }> = ({ message }) => {
       ) : null}
       {message.interactive.type === 'listMessage' ? (
         <div className='grid grid-cols-2 gap-[2px] mt-[2px]'>
-          <ListMessageButton />
+          <ListMessageButton message={message.interactive?.listMessage} />
         </div>
       ) : null}
       {message.interactive.type === 'reply' ? (
@@ -94,8 +94,9 @@ const QuickReplyButton: FC<{ order: QuickReplyButtonIndex; message: any }> = ({ 
   }
 };
 
-const ListMessageButton: FC = () => {
+const ListMessageButton: FC<{ message: any }> = ({ message }) => {
   const [isShowMessage, setShowMessage] = useState(false);
+  console.log('message bot', message);
   return (
     <>
       <div className='w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-2 py-2 font-sans text-center text-[#0099CB] font-normal col-span-full flex items-center justify-center' onClick={() => setShowMessage(!isShowMessage)}>
@@ -111,7 +112,7 @@ const ListMessageButton: FC = () => {
       </div>
 
       <Transition appear show={isShowMessage} className='absolute top-[30%] left-0 right-0 '>
-        <Transition.Child enter='ease-out duration-300' enterFrom='opacity-0 scale-95' enterTo='opacity-100 scale-100' leave='ease-in duration-200' leaveFrom='opacity-100 scale-100' leaveTo='opacity-0 scale-95' as='div' className='bg-white rounded-tr-2xl rounded-tl-2xl w-full absolute h-[375px] left-0 right-0 z-20 px-[18px] py-[23px]'>
+        <Transition.Child enter='ease-out duration-300' enterFrom='opacity-0 scale-95' enterTo='opacity-100 scale-100' leave='ease-in duration-200' leaveFrom='opacity-100 scale-100' leaveTo='opacity-0 scale-95' as='div' className='bg-white rounded-tr-2xl rounded-tl-2xl w-full absolute max-h-[375px] h-auto left-0 right-0 z-20 px-[18px] py-[23px]'>
           <div className='flex flex-col'>
             <div className='flex flex-col'>
               <div className='flex items-center justify-center relative'>
@@ -124,31 +125,17 @@ const ListMessageButton: FC = () => {
               </div>
               <p className='mt-5 text-[#00796B] text-sm'>Menu</p>
             </div>
-            <div className='flex flex-col mt-7 space-y-6'>
-              <div className='flex space-between items-center '>
-                <label className='inline-flex items-center w-full'>
-                  <span className='text-sm text-black'>Personal</span>
-                  <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
-                </label>
-              </div>
-              <div className='flex space-between items-center '>
-                <label className='inline-flex items-center w-full'>
-                  <span className='text-sm text-black'>Personal</span>
-                  <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
-                </label>
-              </div>
-              <div className='flex space-between items-center '>
-                <label className='inline-flex items-center w-full'>
-                  <span className='text-sm text-black'>Personal</span>
-                  <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
-                </label>
-              </div>
-              <div className='flex space-between items-center '>
-                <label className='inline-flex items-center w-full'>
-                  <span className='text-sm text-black'>Personal</span>
-                  <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
-                </label>
-              </div>
+            <div className='flex flex-col mt-auto space-y-6'>
+              {message.map((data: any, index: number) => {
+                if (data.enabled) {
+                  return (
+                    <label className='inline-flex items-center w-full' key={index}>
+                      <span className='text-sm text-black'>{data.title}</span>
+                      <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
+                    </label>
+                  );
+                }
+              })}
             </div>
             <button className='bg-[#00BF56] rounded-md w-full h-[46px] flex items-center justify-center text-white mt-8'>KIRIM</button>
           </div>

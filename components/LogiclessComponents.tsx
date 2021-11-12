@@ -62,7 +62,7 @@ export const PreviewComponent: FC = ({ children }) => {
               Today
             </label>
           </div>
-          <div className='relative p-2 h-auto'>{children}</div>
+          <div className=' p-2 h-auto'>{children}</div>
         </div>
       </div>
     </PreviewComponentContainer>

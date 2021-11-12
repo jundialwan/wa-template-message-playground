@@ -22,13 +22,16 @@ type InteractiveButtonComponent = {
 };
 
 const defaultValueReplyButtons: ReplyButtonComponent[] = [
-  { enabled: true, text: 'MyButton' },
-  { enabled: false, text: '' },
-  { enabled: false, text: '' },
+  { enabled: true, text: 'Kembali' },
+  { enabled: false, text: 'Lanjut' },
+  { enabled: false, text: 'Batal' },
 ];
 const defaultValueInteractiveButtons: listMessageButtonComponent[] = [
   { enabled: true, title: 'Visit our website', subtitle: 'https://bahasa.ai' },
   { enabled: true, title: 'Call us', subtitle: '62813425160798' },
+  { enabled: true, title: 'Visit our website', subtitle: 'https://bahasa.ai' },
+  { enabled: true, title: 'Call us', subtitle: '62813425160798' },
+  { enabled: true, title: 'Visit our website', subtitle: 'https://bahasa.ai' },
 ];
 
 export const interactiveButtonsAtom = atom<InteractiveButtonComponent>({
@@ -76,6 +79,54 @@ export const titleInteractiveButtonsTypeSelector = selector<string>({
     return;
   },
 });
+// ----------------------//
+
+export const allReplyButtonSelector = selector<ReplyButtonComponent[]>({
+  key: 'allReplyButtonSelector',
+  get: ({ get }) => {
+    const buttonsComponent = get(interactiveButtonsAtom);
+
+    return buttonsComponent?.reply || defaultValueReplyButtons;
+  },
+});
+
+export const ReplyButtonSelector = selectorFamily<ReplyButtonComponent, ReplyButtonIndex>({
+  key: 'ReplyButtonSelector',
+  get:
+    (order) =>
+    ({ get }) => {
+      const buttonsComponent = get(interactiveButtonsAtom);
+
+      return buttonsComponent.reply?.[order] || defaultValueReplyButtons[2];
+    },
+  set:
+    (order) =>
+    ({ set, get }, ReplyButton) => {
+      if (order < 0 || order > 2) return; // not valid button index range
+
+      if (!(ReplyButton instanceof DefaultValue)) {
+        const buttonsComponent = get(interactiveButtonsAtom);
+
+        const selectedButton = buttonsComponent?.reply?.[order];
+
+        if (selectedButton) {
+          set(interactiveButtonsAtom, (prev) => {
+            let newReplyButtonState = prev.reply ? [...prev.reply] : [...defaultValueReplyButtons];
+            newReplyButtonState[order] = { ...ReplyButton, text: ReplyButton.text.substring(0, 20) };
+
+            return {
+              ...prev,
+              reply: [...newReplyButtonState],
+            };
+          });
+        } else {
+          set(interactiveButtonsAtom, (prev) => prev);
+        }
+      }
+
+      return;
+    },
+});
 
 // ----------------------//
 export const allInteractiveButtonSelector = selector<listMessageButtonComponent[]>({
@@ -99,7 +150,7 @@ export const interactiveButtonSelector = selectorFamily<listMessageButtonCompone
   set:
     (order) =>
     ({ set, get }, interactiveButton) => {
-      if (order < 0 || order > 2) return; // not valid button index range
+      if (order < 0 || order > 5) return; // not valid button index range
 
       if (!(interactiveButton instanceof DefaultValue)) {
         const interactiveButtonsComponent = get(interactiveButtonsAtom);

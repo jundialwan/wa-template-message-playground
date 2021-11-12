@@ -2,7 +2,7 @@ import React, { ChangeEventHandler, FC, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { buttonsTypeSelector, CTAButtonIndex, ctaButtonSelector, QuickReplyButtonIndex, quickReplyButtonSelector } from '../../../Recoil/buttons';
 import RadioButtonItem from '../../RadioButtonItem';
-import { Switch } from '@chakra-ui/react';
+import { Switch } from '@headlessui/react';
 import { listMessageAtom } from '../../../Recoil/listMessage';
 
 const ButtonsForm: FC<{ buttonType: string; onButtonTypeChange: ChangeEventHandler<HTMLInputElement>; buttonCta: any; buttonReply: any; messageId: number }> = ({ buttonType, onButtonTypeChange, buttonCta, buttonReply, messageId }) => {
@@ -42,7 +42,7 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: 
   const [buttonTextContext, setButtonTextContext] = useState(buttonCta[order]?.type);
   // console.log('buttonCta', buttonCta);
   const handleToggleChange = (event: any, messageId: any) => {
-    setButtonSwitch(event?.target?.checked);
+    setButtonSwitch(event);
     let newlistMessage = listMessage.map((data: any) => {
       return {
         ...data,
@@ -54,7 +54,7 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: 
               ...data.footer.button.cta,
               [order]: {
                 ...data.footer.button.cta[order],
-                enabled: data.id === messageId ? event?.target?.checked : data.footer.button.cta[order].enabled,
+                enabled: data.id === messageId ? event : data.footer.button.cta[order].enabled,
               },
             },
           },
@@ -121,7 +121,9 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: 
       <div className='gap-1'>
         <span className='text-xs font-semibold text-black'>{buttonCta[order].type === 'call-phone' ? 'Call Phone Number' : 'Visit Website'}</span>
         <div className='flex flex-row gap-1 items-center border px-3 py-2 rounded-lg'>
-          <Switch isChecked={buttonSwitch} size='sm' colorScheme='teal' ringColor='#047857' onChange={(e) => handleToggleChange(e, messageId)} />
+          <Switch checked={buttonSwitch} onChange={(e) => handleToggleChange(e, messageId)} className={`${buttonSwitch ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
+            <span className={`${buttonSwitch ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+          </Switch>
 
           <div className='flex flex-col'>
             <div className='flex flex-row items-center gap-1 font-semibold'>
@@ -165,7 +167,7 @@ const QuickReplyButtonInput: FC<{ order: QuickReplyButtonIndex; messageId: numbe
   const [buttonSwitch, setButtonSwitch] = useState(buttonReply[order]?.enabled);
   const [buttonText, setButtonText] = useState(buttonReply[order]?.text);
   const handleToggleChange = (event: any, messageId: any) => {
-    setButtonSwitch(event?.target?.checked);
+    setButtonSwitch(event);
     let newlistMessage = listMessage.map((data: any) => {
       return {
         ...data,
@@ -177,7 +179,7 @@ const QuickReplyButtonInput: FC<{ order: QuickReplyButtonIndex; messageId: numbe
               ...data.footer.button.reply,
               [order]: {
                 ...data.footer.button.reply[order],
-                enabled: data.id === messageId ? event?.target?.checked : data.footer.button.reply[order].enabled,
+                enabled: data.id === messageId ? event : data.footer.button.reply[order].enabled,
               },
             },
           },
@@ -215,7 +217,10 @@ const QuickReplyButtonInput: FC<{ order: QuickReplyButtonIndex; messageId: numbe
 
   return (
     <div className='flex flex-row gap-1 items-center'>
-      <Switch isDisabled={order === 0} isChecked={buttonSwitch} size='sm' colorScheme='teal' ringColor='#047857' onChange={(e) => handleToggleChange(e, messageId)} />
+      <Switch disabled={order === 0} checked={buttonSwitch} onChange={(e) => handleToggleChange(e, messageId)} className={`${buttonSwitch ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
+        <span className={`${buttonSwitch ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+      </Switch>
+
       <input type='text' name={`reply-${order}`} id={`reply-${order}` + messageId} placeholder={`Reply button ${order + 1}`} value={buttonText} onChange={(e) => handleTextChange(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
       <span className='text-xs'>{buttonText.length}/20</span>
     </div>

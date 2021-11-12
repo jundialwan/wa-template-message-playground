@@ -4,6 +4,7 @@ import { bodyTextAtom } from '../../Recoil/bodyText';
 import { buttonsAtom } from '../../Recoil/buttons';
 import { footerTextSelector } from '../../Recoil/footerText';
 import { headerAtom, headerTypeSelector } from '../../Recoil/header';
+import { interactiveButtonsAtom } from '../../Recoil/interactiveButton';
 import { listMessageAtom, messageIdAtom } from '../../Recoil/listMessage';
 import { senderTypeSelector } from '../../Recoil/senderText';
 
@@ -19,6 +20,7 @@ const SubmitForm: FC = () => {
   const bodyText = useRecoilValue(bodyTextAtom);
   const footerText = useRecoilValue(footerTextSelector);
   const buttonType = useRecoilValue(buttonsAtom);
+  const interactiveType = useRecoilValue(interactiveButtonsAtom);
   const [messageId, setMessageId] = useRecoilState(messageIdAtom);
   const [listMessage, setListMessage] = useRecoilState(listMessageAtom);
 
@@ -52,6 +54,11 @@ const SubmitForm: FC = () => {
             cta: buttonType?.cta,
             reply: buttonType?.reply,
           },
+        },
+        interactive: {
+          type: interactiveType.type,
+          allMessage: interactiveType?.listMessage,
+          reply: interactiveType?.reply,
         },
       },
     ]);

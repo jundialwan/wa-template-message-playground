@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { buttonsTypeSelector, CTAButtonIndex, ctaButtonSelector, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons';
 import RadioButtonItem from './RadioButtonItem';
-import { Switch } from '@chakra-ui/react';
+import { Switch } from '@headlessui/react';
 import QuickReplyButtonsInput from './QuickReplyButtonsInput';
 
 const ButtonsForm: FC = () => {
@@ -37,7 +37,7 @@ const CTAButtonsInput: FC = () => {
 const CTAButtonInput: FC<{ order: CTAButtonIndex }> = ({ order }) => {
   const [thisButton, setThisButton] = useRecoilState(ctaButtonSelector(order));
 
-  const onToggleChange = (e: any) => setThisButton((curr) => ({ ...curr, enabled: e.target.checked }));
+  const onToggleChange = (e: any) => setThisButton((curr) => ({ ...curr, enabled: e }));
   const onButtonTextChange = (e: any) => setThisButton((curr) => ({ ...curr, text: e.target.value }));
   const onCTAContextChange = (e: any) =>
     setThisButton((curr) => ({
@@ -50,7 +50,9 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex }> = ({ order }) => {
       <div className='gap-1'>
         <span className='text-xs font-semibold text-black'>{thisButton.type === 'call-phone' ? 'Call Phone Number' : 'Visit Website'}</span>
         <div className='flex flex-row gap-1 items-center border px-3 py-2 rounded-lg'>
-          <Switch isChecked={thisButton.enabled} size='sm' colorScheme='teal' ringColor='#047857' onChange={onToggleChange} />
+          <Switch checked={thisButton?.enabled} onChange={onToggleChange} className={`${thisButton?.enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
+            <span className={`${thisButton?.enabled ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+          </Switch>
 
           <div className='flex flex-col'>
             <div className='flex flex-row items-center gap-1 font-semibold'>

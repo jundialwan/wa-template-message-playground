@@ -22,7 +22,7 @@ const QuickReplyButtonInput: FC<{ order: ReplyButtonIndex }> = ({ order }) => {
 
   return (
     <div className='flex flex-row gap-1 items-center'>
-      <Switch checked={thisButton?.enabled} onChange={onToggleChange} className={`${thisButton?.enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
+      <Switch disabled={order === 0} checked={thisButton?.enabled} onChange={onToggleChange} className={`${thisButton?.enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
         <span className={`${thisButton?.enabled ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
       </Switch>
       <input type='text' name={`reply-btn-${order}`} id={`reply-btn-${order}`} placeholder={`Reply button ${order + 1}`} value={thisButton.text} onChange={onButtonTextChange} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />

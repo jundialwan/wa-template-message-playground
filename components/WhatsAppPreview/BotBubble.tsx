@@ -48,7 +48,7 @@ const BotBubble: FC<{ message: any }> = ({ message }) => {
           <QuickReplyButton order={2} message={message.footer.button.reply} />
         </div>
       ) : null}
-      {message.interactive.type === 'allMessage' ? (
+      {message.interactive.type === 'listMessage' ? (
         <div className='grid grid-cols-2 gap-[2px] mt-[2px]'>
           <ListMessageButton />
         </div>

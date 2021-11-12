@@ -8,6 +8,7 @@ import ButtonsForm from './Footer/ButtonsForm';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { listMessageAtom } from '../../Recoil/listMessage';
 import SenderForm from './Sender/SenderForm';
+import InteractiveForm from './Interactive/InteractiveForm';
 
 const TemplateEditor: FC = () => {
   // const listMessage = useRecoilValue(listMessageAtom);
@@ -121,10 +122,17 @@ const TemplateEditor: FC = () => {
                   <SectionSubtitle subtitle='Add a short line of text to the bottom of your message. Max: 60 chars.' />
                   <FooterForm footerText={message.footer.text} messageId={message.id} onFooterTextChange={(event) => handleFooterTextChange(event, message.id)} />
                 </div>
+
                 <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Buttons (optional)' />
                   <SectionSubtitle subtitle="Create buttons that let customers respond to your message. Available: 'Call to action' and 'Quick Reply' button." />
                   <ButtonsForm buttonType={message.footer.button.type} onButtonTypeChange={(event) => handleFooterBtnTypeChange(event, message.id)} buttonCta={message.footer.button.cta} buttonReply={message.footer.button.reply} messageId={message.id} />
+                </div>
+                <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
+                  <SectionHeading title='Interactive Message (optional)' />
+                  <SectionSubtitle subtitle="Create interactive message that let customers respond to your message. Available: 'List Message' and 'Reply Button' button." />
+
+                  <InteractiveForm />
                 </div>
               </AccordionPanel>
             </AccordionItem>

@@ -1,14 +1,16 @@
-import React, { FC, useState } from 'react';
+import React, { ChangeEventHandler, FC, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { interactiveButtonsTypeSelector } from '../../../Recoil/interactiveButton';
-import ListMessageButtonInput from '../../InteractiveForm/ListMessageButtonInput';
+import { listMessageAtom } from '../../../Recoil/listMessage';
+import ListMessageButtonInput from './Input/ListMessageButtonInput';
 import ReplyButtonsInput from '../../InteractiveForm/ReplyButtonInput';
-import TitleListMessage from '../../InteractiveForm/TitleMessage';
+import TitleListMessage from './Input/TitleListMessage';
 import RadioButtonItem from '../../RadioButtonItem';
 
-const InteractiveForm: FC = () => {
-  const [buttonType, setButtonType] = useRecoilState(interactiveButtonsTypeSelector);
-  const onButtonTypeChange = (e: any) => setButtonType(e.target.value);
+const InteractiveForm: FC<{ buttonType: string; onButtonTypeChange: ChangeEventHandler<HTMLInputElement>; messageId: number; titleInteractive: string }> = ({ buttonType, onButtonTypeChange, messageId, titleInteractive }) => {
+  const [listMessage, setListMessage] = useRecoilState(listMessageAtom);
+  // const [buttonType, setButtonType] = useRecoilState(interactiveButtonsTypeSelector);
+  // const onButtonTypeChange = (e: any) => setButtonType(e.target.value);
 
   return (
     <div className='flex flex-col'>
@@ -20,8 +22,8 @@ const InteractiveForm: FC = () => {
       <div className='flex flex-col mt-4'>
         {buttonType === 'listMessage' ? (
           <div className='flex flex-col'>
-            <TitleListMessage />
-            <ListMessageButtonInput order={0} />
+            <TitleListMessage messageId={messageId} titleInteractive={titleInteractive} />
+            <ListMessageButtonInput order={0} messageId={messageId} />
             <ListMessageButtonInput order={1} />
             <ListMessageButtonInput order={2} />
             <ListMessageButtonInput order={3} />

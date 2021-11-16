@@ -1,14 +1,11 @@
 import React, { ChangeEventHandler, FC, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { buttonsTypeSelector, CTAButtonIndex, ctaButtonSelector, QuickReplyButtonIndex, quickReplyButtonSelector } from '../../../Recoil/buttons';
+import { CTAButtonIndex, QuickReplyButtonIndex, quickReplyButtonSelector } from '../../../Recoil/buttons';
 import RadioButtonItem from '../../RadioButtonItem';
 import { Switch } from '@headlessui/react';
 import { listMessageAtom } from '../../../Recoil/listMessage';
 
 const ButtonsForm: FC<{ buttonType: string; onButtonTypeChange: ChangeEventHandler<HTMLInputElement>; buttonCta: any; buttonReply: any; messageId: number }> = ({ buttonType, onButtonTypeChange, buttonCta, buttonReply, messageId }) => {
-  // const [buttonType, setButtonType] = useRecoilState(buttonsTypeSelector);
-  // const onButtonTypeChange = (e: any) => setButtonType(e.target.value);
-
   return (
     <>
       <div className='flex flex-row'>
@@ -36,10 +33,8 @@ const CTAButtonsInput: FC<{ messageId: number; buttonCta: any }> = ({ messageId,
 
 const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: any }> = ({ order, messageId, buttonCta }) => {
   const [listMessage, setListMessage] = useRecoilState(listMessageAtom);
-  const [thisButton, setThisButton] = useRecoilState(ctaButtonSelector(order));
   const [buttonSwitch, setButtonSwitch] = useState(buttonCta[order]?.enabled);
   const [buttonText, setButtonText] = useState(buttonCta[order]?.text);
-  const [buttonTextContext, setButtonTextContext] = useState(buttonCta[order]?.type);
   // console.log('buttonCta', buttonCta);
   const handleToggleChange = (event: any, messageId: any) => {
     setButtonSwitch(event);
@@ -107,14 +102,6 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: 
     });
     setListMessage(newlistMessage);
   };
-
-  const onToggleChange = (e: any) => setThisButton((curr) => ({ ...curr, enabled: e.target.checked }));
-  const onButtonTextChange = (e: any) => setThisButton((curr) => ({ ...curr, text: e.target.value }));
-  const onCTAContextChange = (e: any) =>
-    setThisButton((curr) => ({
-      ...curr,
-      [thisButton.type === 'call-phone' ? 'phone' : 'url']: e.target.value,
-    }));
 
   return (
     <div className='flex flex-row items-center gap-1 mt-2'>

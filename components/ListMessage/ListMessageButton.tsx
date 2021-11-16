@@ -1,11 +1,12 @@
 import React, { FC, Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useRecoilValue } from 'recoil';
-import { interactiveButtonsAtom } from '../../Recoil/interactiveButton';
+import { interactiveButtonsAtom, titleInteractiveButtonsAtom } from '../../Recoil/interactiveButton';
 
 const ListMessageButton: FC = () => {
   const [isShowMessage, setShowMessage] = useState(false);
   const message = useRecoilValue(interactiveButtonsAtom);
+  const titleMessage = useRecoilValue(titleInteractiveButtonsAtom);
   console.log('List Message', message);
   return (
     <>
@@ -31,7 +32,7 @@ const ListMessageButton: FC = () => {
                     <path d='M8.87422 7.50011L14.7149 1.65911C15.095 1.27918 15.095 0.664882 14.7149 0.28495C14.335 -0.0949832 13.7207 -0.0949832 13.3408 0.28495L7.49991 6.12595L1.65921 0.28495C1.27911 -0.0949832 0.665002 -0.0949832 0.285077 0.28495C-0.0950257 0.664882 -0.0950257 1.27918 0.285077 1.65911L6.12578 7.50011L0.285077 13.3411C-0.0950257 13.721 -0.0950257 14.3353 0.285077 14.7153C0.474417 14.9048 0.72337 15 0.972145 15C1.22092 15 1.46969 14.9048 1.65921 14.7153L7.49991 8.87428L13.3408 14.7153C13.5303 14.9048 13.7791 15 14.0279 15C14.2766 15 14.5254 14.9048 14.7149 14.7153C15.095 14.3353 15.095 13.721 14.7149 13.3411L8.87422 7.50011Z' fill='#7D8489' />
                   </svg>
                 </button>
-                <h3 className='font-bold text-sm text-black'>Pilih Kelas Kereta Api</h3>
+                <h3 className='font-bold text-sm text-black'>{titleMessage}</h3>
               </div>
               <p className='mt-5 text-[#00796B] text-sm'>Menu</p>
             </div>

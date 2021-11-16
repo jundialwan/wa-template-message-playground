@@ -80,6 +80,19 @@ const TemplateEditor: FC = () => {
     });
     setListMessage(newlistMessage);
   };
+  const handleInteractiveBtnTypeChange = (event: any, listId: any) => {
+    let newlistMessage = listMessage.map((data: any) => {
+      return {
+        ...data,
+        interactive: {
+          ...data.interactive,
+          type: data.id === listId ? event?.target?.value : data.interactive.type,
+        },
+      };
+    });
+    setListMessage(newlistMessage);
+    console.log('Event type interactive ', event?.target?.value);
+  };
   const handleRemoveMessage = (listId: any) => {
     let newlistMessage = listMessage.filter((data: any) => data.id !== listId);
     setListMessage(newlistMessage);
@@ -132,7 +145,7 @@ const TemplateEditor: FC = () => {
                   <SectionHeading title='Interactive Message (optional)' />
                   <SectionSubtitle subtitle="Create interactive message that let customers respond to your message. Available: 'List Message' and 'Reply Button' button." />
 
-                  <InteractiveForm />
+                  <InteractiveForm buttonType={message.interactive.type} onButtonTypeChange={(event) => handleInteractiveBtnTypeChange(event, message.id)} messageId={message.id} titleInteractive={message.interactive.title} />
                 </div>
               </AccordionPanel>
             </AccordionItem>

@@ -149,7 +149,6 @@ const QuickReplyButtonsInput: FC<{ messageId: number; buttonReply: any }> = ({ m
 };
 
 const QuickReplyButtonInput: FC<{ order: QuickReplyButtonIndex; messageId: number; buttonReply: any }> = ({ order, messageId, buttonReply }) => {
-  const [thisButton, setThisButton] = useRecoilState(quickReplyButtonSelector(order));
   const [listMessage, setListMessage] = useRecoilState(listMessageAtom);
   const [buttonSwitch, setButtonSwitch] = useState(buttonReply[order]?.enabled);
   const [buttonText, setButtonText] = useState(buttonReply[order]?.text);
@@ -197,10 +196,6 @@ const QuickReplyButtonInput: FC<{ order: QuickReplyButtonIndex; messageId: numbe
     });
     setListMessage(newlistMessage);
   };
-  console.log('Quick Button Reply', buttonReply);
-  console.log('Quick messageId', messageId);
-  const onToggleChange = (e: any) => setThisButton((curr) => ({ ...curr, enabled: e.target.checked }));
-  const onButtonTextChange = (e: any) => setThisButton((curr) => ({ ...curr, text: e.target.value }));
 
   return (
     <div className='flex flex-row gap-1 items-center'>

@@ -96,7 +96,8 @@ const QuickReplyButton: FC<{ order: QuickReplyButtonIndex; message: any }> = ({ 
 
 const ListMessageButton: FC<{ message: any; titleMessage: string }> = ({ message, titleMessage }) => {
   const [isShowMessage, setShowMessage] = useState(false);
-  console.log('message bot', message);
+  // const [messageList, setMessageList] = useState(message);
+  console.log('ListMessageButton', message[1]);
   return (
     <>
       <div className='w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-2 py-2 font-sans text-center text-[#0099CB] font-normal col-span-full flex items-center justify-center' onClick={() => setShowMessage(!isShowMessage)}>
@@ -126,16 +127,16 @@ const ListMessageButton: FC<{ message: any; titleMessage: string }> = ({ message
               <p className='mt-5 text-[#00796B] text-sm'>Menu</p>
             </div>
             <div className='flex flex-col mt-auto space-y-6'>
-              {message.map((data: any, index: number) => {
-                if (data.enabled) {
-                  return (
-                    <label className='inline-flex items-center w-full' key={index}>
-                      <span className='text-sm text-black'>{data.title}</span>
-                      <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
-                    </label>
-                  );
-                }
-              })}
+              <RadioListMessage order={0} message={message[0]} />
+              <RadioListMessage order={1} message={message[1]} />
+              <RadioListMessage order={2} message={message[2]} />
+              <RadioListMessage order={3} message={message[3]} />
+              <RadioListMessage order={4} message={message[4]} />
+              <RadioListMessage order={5} message={message[5]} />
+              <RadioListMessage order={6} message={message[6]} />
+              <RadioListMessage order={7} message={message[7]} />
+              <RadioListMessage order={8} message={message[8]} />
+              <RadioListMessage order={9} message={message[9]} />
             </div>
             <button className='bg-[#00BF56] rounded-md w-full h-[46px] flex items-center justify-center text-white mt-8'>KIRIM</button>
           </div>
@@ -143,6 +144,23 @@ const ListMessageButton: FC<{ message: any; titleMessage: string }> = ({ message
       </Transition>
     </>
   );
+};
+
+const RadioListMessage: FC<{ order: number; message: any }> = ({ order, message }) => {
+  const thisButton = message;
+  console.log('message radio buttonlist ', message);
+  // console.log('message radio buttonlist order', message[order]);
+  if (thisButton?.enabled) {
+    return (
+      <label className='inline-flex items-center w-full'>
+        <span className='text-sm text-black'>{thisButton.title}</span>
+        <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
+      </label>
+    );
+  } else {
+    return null;
+  }
+  // return <div> halo</div>;
 };
 
 const ReplyButton: FC<{ order: ReplyButtonIndex; message: any }> = ({ order, message }) => {

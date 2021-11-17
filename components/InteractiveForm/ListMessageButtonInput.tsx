@@ -11,7 +11,7 @@ const ListMessageButtonInput: FC<{ order: ListMessageIndex }> = ({ order }) => {
   const onToggleChange = (e: any) => setThisButton((curr) => ({ ...curr, enabled: e }));
   const onButtonTitleChange = (e: any) => setThisButton((curr) => ({ ...curr, title: e.target.value }));
   const onButtonSubtitleChange = (e: any) => (e: any) => setThisButton((curr) => ({ ...curr, subtitle: e.target.value }));
-  console.log('ListMessageButtonInput', thisButton);
+  // console.log('ListMessageButtonInput', thisButton);
   return (
     <div className='flex flex-row items-center gap-1 mt-2'>
       <div className='gap-1'>

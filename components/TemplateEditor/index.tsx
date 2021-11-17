@@ -145,7 +145,7 @@ const TemplateEditor: FC = () => {
                   <SectionHeading title='Interactive Message (optional)' />
                   <SectionSubtitle subtitle="Create interactive message that let customers respond to your message. Available: 'List Message' and 'Reply Button' button." />
 
-                  <InteractiveForm buttonType={message.interactive.type} onButtonTypeChange={(event) => handleInteractiveBtnTypeChange(event, message.id)} messageId={message.id} titleInteractive={message.interactive.title} />
+                  <InteractiveForm buttonType={message.interactive.type} onButtonTypeChange={(event) => handleInteractiveBtnTypeChange(event, message.id)} messageId={message.id} titleInteractive={message.interactive.title} interactiveMessage={message.interactive} />
                 </div>
               </AccordionPanel>
             </AccordionItem>

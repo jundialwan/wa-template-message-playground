@@ -13,7 +13,7 @@ const UserBubble: FC<{ message: any }> = ({ message }) => {
 
   return (
     <>
-      <StyledUserMessage className='relative w-full min-h-[20px] bg-leaf rounded-lg shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
+      <StyledUserMessage className='relative w-full min-h-[20px] bg-leaf rounded-b-[5px] rounded-tr-none rounded-tl-[5px] shadow-chat-bubble z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
         {message.header.type === 'text' ? <div className='font-bold px-[4px]'>{message.header.text}</div> : null}
         {message.header.type === 'image' ? <ImagePreview headerPathImage={message.header.image.path} /> : null}
         {message.header.type === 'video' ? <VideoPreview headerPathVideo={message.header.video.path} /> : null}

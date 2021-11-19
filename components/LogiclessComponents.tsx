@@ -63,7 +63,7 @@ export const PreviewComponent: FC = ({ children }) => {
             </svg>
           </div>
         </div>
-        <div className='h-full overflow-y-auto relative max-h-[780px]'>
+        <div className='h-full overflow-y-auto relative max-h-[900px]'>
           <div className='flex w-full'>
             <label htmlFor='' className='my-3 mx-auto bg-ocean-100 shadow-day-bubble px-3  py-2 text-gray-600 uppercase font-semibold rounded-md'>
               Today

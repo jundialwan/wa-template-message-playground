@@ -38,7 +38,7 @@ const UserMessage = () => {
 
   return (
     <>
-      <StyledUserMessage className='relative w-full min-h-[20px] bg-leaf rounded-lg z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
+      <StyledUserMessage className='relative w-full min-h-[20px] bg-leaf rounded-b-[5px] rounded-tr-none rounded-tl-[5px] z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
         {headerType === 'text' ? <div className='font-bold px-[4px]'>{headerText}</div> : null}
         {headerType === 'image' ? <ImagePreview headerPathImage={headerPathImage} /> : null}
         {headerType === 'video' ? <VideoPreview headerPathVideo={headerPathVideo} /> : null}

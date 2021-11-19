@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'day-bubble':
-          '0px 1px 1px rgba(164, 152, 135, 0.321416), 0px 0px 1px #A39F98',
+        'day-bubble': '0px 1px 1px rgba(164, 152, 135, 0.321416), 0px 0px 1px #A39F98',
+        'chat-bubble': '1px 1px 0px rgba(0, 0, 0, 0.1)',
       },
       colors: {
         leaf: '#E1FFC7',

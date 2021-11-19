@@ -52,7 +52,7 @@ const TemplateMessagePreview: FC = () => {
   const interactiveType = useRecoilValue(interactiveButtonsTypeSelector);
   return (
     <>
-      <ChatBot className='relative w-full min-h-[20px] bg-white rounded-lg shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
+      <ChatBot className='relative w-full min-h-[20px] bg-white rounded-b-[5px] rounded-tl-none rounded-tr-[5px] shadow z-10 px-1 py-1 pb-2 text-black font-normal font-sans'>
         {headerType === 'text' ? <div className='font-bold px-[4px]'>{headerText}</div> : null}
         {headerType === 'image' ? <ImagePreview headerPathImage={headerPathImage} /> : null}
         {headerType === 'video' ? <VideoPreview headerPathVideo={headerPathVideo} /> : null}

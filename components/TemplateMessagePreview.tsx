@@ -2,8 +2,8 @@ import 'react-aspect-ratio/aspect-ratio.css';
 import { FC } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Icon } from '@chakra-ui/react';
-import { BsImage, BsPlay, BsFileEarmarkText } from 'react-icons/bs';
-import { normalizedBodyTextSelector, renderedBodyTextSelector } from '../Recoil/bodyText';
+import { BsImage, BsFileEarmarkText } from 'react-icons/bs';
+import { renderedBodyTextSelector } from '../Recoil/bodyText';
 import { allCTAButtonSelector, allQuickReplyButtonSelector, buttonsTypeSelector, CTAButtonIndex, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons';
 import { normalizedFooterTextSelector } from '../Recoil/footerText';
 import { headerImageSelector, headerTextSelector, headerTypeSelector, headerVideoSelector } from '../Recoil/header';
@@ -14,8 +14,6 @@ import { IconType } from 'react-icons';
 import VideoPreview from './TemplateMessage/VideoPreview';
 import styled from 'styled-components';
 import { interactiveButtonsTypeSelector } from '../Recoil/interactiveButton';
-import ListMessage from './ListMessage/ListMessageButton';
-import ListMessageButtonInput from './InteractiveForm/ListMessageButtonInput';
 import ListMessageButton from './ListMessage/ListMessageButton';
 import ReplyButton from './ListMessage/ReplyButton';
 
@@ -69,7 +67,6 @@ const TemplateMessagePreview: FC = () => {
         {buttonType === 'cta' ? (
           <>
             <div className='border-t mx-[6px] my-[2px]'></div>
-
             <CTAButton order={0} />
             <CTAButton order={1} />
           </>

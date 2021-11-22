@@ -158,10 +158,13 @@ const RadioListMessage: FC<{ order: number; message: any }> = ({ order, message 
   // console.log('message radio buttonlist order', message[order]);
   if (thisButton?.enabled) {
     return (
-      <label className='inline-flex items-center w-full'>
-        <span className='text-sm text-black'>{thisButton.title}</span>
-        <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
-      </label>
+      <div>
+        <label className='inline-flex items-center w-full'>
+          <span className='text-sm text-black'>{thisButton.title}</span>
+          <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
+        </label>
+        <span className='text-xs text-gray-400 mt-1'>{thisButton?.subtitle}</span>
+      </div>
     );
   } else {
     return null;

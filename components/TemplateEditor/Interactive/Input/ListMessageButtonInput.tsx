@@ -12,7 +12,7 @@ const ListMessageButtonInput: FC<{ order: ListMessageIndex; messageId: number; m
   const [listMessage, setListMessage] = useRecoilState(listMessageAtom);
   const [buttonText, setButtonText] = useState(message.listMessage[order].title);
   const [buttonSwitch, setButtonSwitch] = useState(message.listMessage[order].enabled);
-  const onButtonSubtitleChange = (e: any) => (e: any) => setThisButton((curr) => ({ ...curr, subtitle: e.target.value }));
+  const onButtonSubtitleChange = (e: any) => setThisButton((curr) => ({ ...curr, subtitle: e.target.value }));
   const handleTitleTextInput = (event: any, messageId: any) => {
     setButtonText(event?.target?.value.substring(0, 20));
     let newlistMessage = listMessage.map((data: any) => {

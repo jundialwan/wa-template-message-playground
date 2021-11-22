@@ -46,10 +46,13 @@ const ListMessageButton: FC = () => {
               {message.listMessage?.map((data, index) => {
                 if (data.enabled) {
                   return (
-                    <label className='inline-flex items-center w-full' key={index}>
-                      <span className='text-sm text-black'>{data.title}</span>
-                      <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
-                    </label>
+                    <div>
+                      <label className='inline-flex items-center w-full' key={index}>
+                        <span className='text-sm text-black'>{data.title}</span>
+                        <input type='radio' className='form-radio radio-wa h-4 w-4 ml-auto' name='accountType' value='personal' />
+                      </label>
+                      <span className='text-xs text-gray-400 mt-1'>{data?.subtitle}</span>
+                    </div>
                   );
                 }
               })}

@@ -8,11 +8,30 @@ import { listMessageAtom } from '../../../../Recoil/listMessage';
 type ListMessageIndex = 0 | 1 | 2 | 3 | 4;
 
 const ListMessageButtonInput: FC<{ order: ListMessageIndex; messageId: number; message: any }> = ({ order, messageId, message }) => {
-  const [thisButton, setThisButton] = useRecoilState(interactiveButtonSelector(order));
   const [listMessage, setListMessage] = useRecoilState(listMessageAtom);
   const [buttonText, setButtonText] = useState(message.listMessage[order].title);
+  const [buttonSubText, setButtonSubText] = useState(message.listMessage[order].subtitle);
   const [buttonSwitch, setButtonSwitch] = useState(message.listMessage[order].enabled);
-  const onButtonSubtitleChange = (e: any) => setThisButton((curr) => ({ ...curr, subtitle: e.target.value }));
+  // const onButtonSubtitleChange = (e: any) => setButtonSubText((curr) => ({ ...curr, subtitle: e.target.value }));
+  const handleSubtitleTextInput = (event: any, messageId: any) => {
+    setButtonSubText(event?.target?.value.substring(0, 20));
+    let newlistMessage = listMessage.map((data: any) => {
+      return {
+        ...data,
+        interactive: {
+          ...data.interactive,
+          listMessage: {
+            ...data.interactive.listMessage,
+            [order]: {
+              ...data.interactive.listMessage[order],
+              subtitle: data.id === messageId ? event.target.value : data.interactive.listMessage[order].subtitle,
+            },
+          },
+        },
+      };
+    });
+    setListMessage(newlistMessage);
+  };
   const handleTitleTextInput = (event: any, messageId: any) => {
     setButtonText(event?.target?.value.substring(0, 20));
     let newlistMessage = listMessage.map((data: any) => {
@@ -66,7 +85,7 @@ const ListMessageButtonInput: FC<{ order: ListMessageIndex; messageId: number; m
           <div className='flex flex-col'>
             <div className='flex flex-row items-center gap-1 font-semibold'>
               <span className='text-xs text-gray-500'>Title Text</span>
-              <span className='text-xs'>({thisButton.title.length}/20)</span>
+              <span className='text-xs'>({buttonText?.length}/20)</span>
             </div>
             {/* Title */}
             <input type='text' name={`cta-text-${order}`} id={`cta-text-${order}`} value={buttonText} onChange={(e) => handleTitleTextInput(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
@@ -74,10 +93,10 @@ const ListMessageButtonInput: FC<{ order: ListMessageIndex; messageId: number; m
           <div className='flex flex-col'>
             <div className='flex flex-row items-center gap-1 font-semibold'>
               <span className='text-xs text-gray-500'>Subtitle Text</span>
-              <span className='text-xs'>({thisButton?.subtitle?.length}/20)</span>
+              <span className='text-xs'>({buttonSubText?.length}/20)</span>
             </div>
             {/* Subtitle */}
-            <input type='text' name={`cta-text-${order}`} id={`cta-text-${order}`} value={thisButton.subtitle} onChange={onButtonSubtitleChange} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+            <input type='text' name={`cta-text-${order}`} id={`cta-text-${order}`} value={buttonSubText} onChange={(e) => handleSubtitleTextInput(e, messageId)} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
           </div>
         </div>
       </div>

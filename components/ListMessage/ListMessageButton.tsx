@@ -29,7 +29,7 @@ const ListMessageButton: FC = () => {
       </div>
       <Transition appear show={isShowMessage && isOpened} className='bg-black bg-opacity-40 top-0 left-0 right-0 bottom-0 absolute z-20'></Transition>
       <Transition appear show={isShowMessage && isOpened}>
-        <Transition.Child enter='ease-out duration-300' enterFrom='opacity-0 scale-95' enterTo='opacity-100 scale-100' leave='ease-in duration-200' leaveFrom='opacity-100 scale-100' leaveTo='opacity-0 scale-95' as='div' className='bg-white rounded-tr-2xl rounded-tl-2xl w-full absolute max-h-[375px] left-0 right-0 z-20 px-[18px] py-[23px] bottom-0'>
+        <Transition.Child enter='ease-out duration-300' enterFrom='opacity-0 scale-95' enterTo='opacity-100 scale-100' leave='ease-in duration-200' leaveFrom='opacity-100 scale-100' leaveTo='opacity-0 scale-95' as='div' className='bg-white rounded-tr-2xl rounded-tl-2xl w-full absolute max-h-[450px] left-0 right-0 z-20 px-[18px] py-[23px] bottom-0'>
           <div className='flex flex-col h-full'>
             <div className='flex flex-col'>
               <div className='flex items-center justify-center relative'>

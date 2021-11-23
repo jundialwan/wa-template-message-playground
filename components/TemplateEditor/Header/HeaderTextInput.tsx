@@ -19,10 +19,10 @@ const HeaderTextInput: FC<{ messageId?: number; headerText: string }> = ({ messa
   };
 
   return (
-    <div className='mt-2'>
+    <div tw='mt-2'>
       <span>Header Text</span>
-      <input type='text' name='footer' id='footer' value={headerText} onChange={(e) => handleHeaderTextChange(e, messageId)} className='w-full border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
-      <span className='text-xs float-right'>Char: {headerText?.length}/60</span>
+      <input type='text' name='footer' id='footer' value={headerText} onChange={(e) => handleHeaderTextChange(e, messageId)} tw='w-full border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+      <span tw='text-xs float-right'>Char: {headerText?.length}/60</span>
     </div>
   );
 };

@@ -1,15 +1,13 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
+import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
+import GlobalStyles from '../styles/GlobalStyles';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <GlobalStyles />
+      <Component {...pageProps} />
     </RecoilRoot>
-  )
+  );
 }
-export default MyApp
+export default MyApp;

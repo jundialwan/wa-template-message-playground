@@ -11,15 +11,15 @@ const InteractiveForm: FC = () => {
   const onButtonTypeChange = (e: any) => setButtonType(e.target.value);
 
   return (
-    <div className='flex flex-col'>
-      <div className='flex flex-row'>
+    <div tw='flex flex-col'>
+      <div tw='flex flex-row'>
         <RadioButtonItem label='None' value='none' onChange={onButtonTypeChange} isChecked={buttonType === 'none'} />
         <RadioButtonItem label='List Message' value='listMessage' onChange={onButtonTypeChange} isChecked={buttonType === 'listMessage'} />
         <RadioButtonItem label='Reply Button' value='reply' onChange={onButtonTypeChange} isChecked={buttonType === 'reply'} />
       </div>
-      <div className='flex flex-col mt-4'>
+      <div tw='flex flex-col mt-4'>
         {buttonType === 'listMessage' ? (
-          <div className='flex flex-col'>
+          <div tw='flex flex-col'>
             <TitleListMessage />
             <ListMessageButtonInput order={0} />
             <ListMessageButtonInput order={1} />

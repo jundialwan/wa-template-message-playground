@@ -15,7 +15,7 @@ const HeaderForm: FC<{
 }> = ({ headerType, onHeaderTypeChange, messageId, headerText, headerImagePath, headerVideoPath }) => {
   return (
     <>
-      <div className='flex flex-row'>
+      <div tw='flex flex-row'>
         <RadioButtonItem isChecked={headerType === 'none'} value='none' id={'no-header' + messageId} label='None' onChange={onHeaderTypeChange} />
         <RadioButtonItem isChecked={headerType === 'text'} value='text' id={'text-edit' + messageId} label='Text' onChange={onHeaderTypeChange} />
         <RadioButtonItem isChecked={headerType === 'image'} value='image' id={'image-edit' + messageId} label='Image' onChange={onHeaderTypeChange} />

@@ -11,7 +11,7 @@ const SenderForm: FC<SenderFormProps> = ({ senderType, onSenderTypeChange, messa
   console.log('senderType', senderType);
   return (
     <>
-      <div className='flex flex-row'>
+      <div tw='flex flex-row'>
         <RadioButtonItem isChecked={senderType === 'bot'} value='bot' id={'bot-sender-edit' + messageId} label='Bot' onChange={onSenderTypeChange} />
         <RadioButtonItem isChecked={senderType === 'user'} value='user' id={'user-sender-edit' + messageId} label='User' onChange={onSenderTypeChange} />
       </div>

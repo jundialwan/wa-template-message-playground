@@ -11,7 +11,7 @@ const ButtonsForm: FC = () => {
 
   return (
     <>
-      <div className='flex flex-row'>
+      <div tw='flex flex-row'>
         <RadioButtonItem isChecked={buttonType === 'none'} value='none' id='no-button' label='None' onChange={onButtonTypeChange} />
         <RadioButtonItem isChecked={buttonType === 'cta'} value='cta' id='cta' label='Call to Action' onChange={onButtonTypeChange} />
         <RadioButtonItem isChecked={buttonType === 'reply'} value='reply' id='reply' label='Quick Reply' onChange={onButtonTypeChange} />
@@ -27,7 +27,7 @@ export default ButtonsForm;
 
 const CTAButtonsInput: FC = () => {
   return (
-    <div className='flex flex-col p-2 mt-2 gap-1'>
+    <div tw='flex flex-col p-2 mt-2 gap-1'>
       <CTAButtonInput order={0} />
       <CTAButtonInput order={1} />
     </div>
@@ -46,33 +46,33 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex }> = ({ order }) => {
     }));
 
   return (
-    <div className='flex flex-row items-center gap-1 mt-2'>
-      <div className='gap-1'>
-        <span className='text-xs font-semibold text-black'>{thisButton.type === 'call-phone' ? 'Call Phone Number' : 'Visit Website'}</span>
-        <div className='flex flex-row gap-1 items-center border px-3 py-2 rounded-lg'>
-          <Switch checked={thisButton?.enabled} onChange={onToggleChange} className={`${thisButton?.enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
-            <span className={`${thisButton?.enabled ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+    <div tw='flex flex-row items-center gap-1 mt-2'>
+      <div tw='gap-1'>
+        <span tw='text-xs font-semibold text-black'>{thisButton.type === 'call-phone' ? 'Call Phone Number' : 'Visit Website'}</span>
+        <div tw='flex flex-row gap-1 items-center border px-3 py-2 rounded-lg'>
+          <Switch checked={thisButton?.enabled} onChange={onToggleChange} tw={`${thisButton?.enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
+            <span tw={`${thisButton?.enabled ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
           </Switch>
 
-          <div className='flex flex-col'>
-            <div className='flex flex-row items-center gap-1 font-semibold'>
-              <span className='text-xs text-gray-500'>Button Text</span>
-              <span className='text-xs'>({thisButton.text.length}/20)</span>
+          <div tw='flex flex-col'>
+            <div tw='flex flex-row items-center gap-1 font-semibold'>
+              <span tw='text-xs text-gray-500'>Button Text</span>
+              <span tw='text-xs'>({thisButton.text.length}/20)</span>
             </div>
 
-            <input type='text' name={`cta-text-${order}`} id={`cta-text-${order}`} value={thisButton.text} onChange={onButtonTextChange} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+            <input type='text' name={`cta-text-${order}`} id={`cta-text-${order}`} value={thisButton.text} onChange={onButtonTextChange} tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
           </div>
 
-          <div className='flex flex-col'>
-            <div className='flex flex-row items-center gap-1 font-semibold'>
-              <span className='text-xs text-gray-500'>{thisButton.type === 'call-phone' ? 'Phone Number' : 'Website URL'}</span>
-              <span className='text-xs'>
+          <div tw='flex flex-col'>
+            <div tw='flex flex-row items-center gap-1 font-semibold'>
+              <span tw='text-xs text-gray-500'>{thisButton.type === 'call-phone' ? 'Phone Number' : 'Website URL'}</span>
+              <span tw='text-xs'>
                 ({thisButton.type === 'call-phone' ? thisButton.phone?.length || 0 : thisButton.url?.length || 0}
                 /20)
               </span>
             </div>
 
-            <input type='text' name={`cta-context-${order}`} id={`cta-context-${order}`} value={thisButton.type === 'call-phone' ? thisButton.phone : thisButton.url} onChange={onCTAContextChange} className='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+            <input type='text' name={`cta-context-${order}`} id={`cta-context-${order}`} value={thisButton.type === 'call-phone' ? thisButton.phone : thisButton.url} onChange={onCTAContextChange} tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
           </div>
         </div>
       </div>

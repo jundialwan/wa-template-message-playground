@@ -18,12 +18,12 @@ const BodyForm: FC<{
   const replaceMono = replaceStrike.replace(/\`\`\`(.*?)\`\`\`/g, (match, p1) => `<span class="font-mono">${p1}</span>`);
   return (
     <>
-      <textarea value={bodyText} onChange={onBodyTextChange} name='body' id='body' className='w-full min-h-[124px] max-h-[124px] p-2 rounded border text-xs text-black font-mono focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600'></textarea>
-      <span className='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Bold: *text*</span>
-      <span className='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Italic: _text_</span>
-      <span className='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Strikethrough: ~text~</span>
-      <span className='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Monospace: ```text```</span>
-      <span className='text-xs float-right'>Char: {bodyText?.length}/1024</span>
+      <textarea value={bodyText} onChange={onBodyTextChange} name='body' id='body' tw='w-full min-h-[124px] max-h-[124px] p-2 rounded border text-xs text-black font-mono focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600'></textarea>
+      <span tw='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Bold: *text*</span>
+      <span tw='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Italic: _text_</span>
+      <span tw='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Strikethrough: ~text~</span>
+      <span tw='text-xs float-left rounded px-[4px] bg-gray-200 mr-1'>Monospace: ```text```</span>
+      <span tw='text-xs float-right'>Char: {bodyText?.length}/1024</span>
     </>
   );
 };

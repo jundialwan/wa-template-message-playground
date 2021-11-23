@@ -112,36 +112,36 @@ const TemplateEditor: FC = () => {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                <div className='flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2 relative'>
+                <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2 relative'>
                   <SectionHeading title='Type User' />
                   <SectionSubtitle subtitle='Choose between user and bot' />
                   <SenderForm senderType={message.sender} onSenderTypeChange={(event) => handleSenderTypeChange(event, message.id)} messageId={message.id} />
-                  <button className='absolute top-2 right-2 bg-red-600 text-red-100 px-6 rounded-md py-2 text-sm transition-all hover:opacity-70' onClick={() => handleRemoveMessage(message.id)}>
+                  <button tw='absolute top-2 right-2 bg-red-600 text-red-100 px-6 rounded-md py-2 text-sm transition-all hover:opacity-70' onClick={() => handleRemoveMessage(message.id)}>
                     Delete
                   </button>
                 </div>
-                <div className='flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
+                <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Header (optional)' />
                   <SectionSubtitle subtitle="Choose which type of media you'll use for this header" />
                   <HeaderForm headerType={message.header.type} headerText={message.header.text} messageId={message.id} onHeaderTypeChange={(event) => handleHeaderTypeChange(event, message.id)} headerImagePath={message.header.image.path} headerVideoPath={message.header.video.path} />
                 </div>
-                <div className='flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
+                <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Body' />
                   <SectionSubtitle subtitle='Enter the text for your message. Parameter format: {{1}}, {{2}}, and so on.' />
                   <BodyForm bodyText={message.body.text} messageId={message.id} onBodyTextChange={(event) => handleBodyTextChange(event, message.id)} />
                 </div>
-                <div className='flex-none border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
+                <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Footer (optional)' />
                   <SectionSubtitle subtitle='Add a short line of text to the bottom of your message. Max: 60 chars.' />
                   <FooterForm footerText={message.footer.text} messageId={message.id} onFooterTextChange={(event) => handleFooterTextChange(event, message.id)} />
                 </div>
 
-                <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
+                <div tw='border-solid border shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Buttons (optional)' />
                   <SectionSubtitle subtitle="Create buttons that let customers respond to your message. Available: 'Call to action' and 'Quick Reply' button." />
                   <ButtonsForm buttonType={message.footer.button.type} onButtonTypeChange={(event) => handleFooterBtnTypeChange(event, message.id)} buttonCta={message.footer.button.cta} buttonReply={message.footer.button.reply} messageId={message.id} />
                 </div>
-                <div className='border-solid border-1 shadow-sm rounded-sm bg-white p-2'>
+                <div tw='border-solid border shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Interactive Message (optional)' />
                   <SectionSubtitle subtitle="Create interactive message that let customers respond to your message. Available: 'List Message' and 'Reply Button' button." />
 

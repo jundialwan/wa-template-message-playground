@@ -7,6 +7,7 @@ import UserMessage from '../TemplateMessage/UserMessage';
 import TemplateMessagePreview from '../TemplateMessagePreview';
 import BotBubble from './BotBubble';
 import UserBubble from './UserBubble';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const WhatsAppPreview = () => {
   const userType = useRecoilValue(senderTypeSelector);

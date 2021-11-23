@@ -1,13 +1,14 @@
 import 'react-aspect-ratio/aspect-ratio.css';
 import { FC, ReactElement } from 'react';
 import { useRecoilValue } from 'recoil';
-import { BsImage, BsFileEarmarkText } from 'react-icons/bs';
+import { BsImage, BsFileEarmarkText, BsTelephoneFill } from 'react-icons/bs';
+import { BiLinkExternal } from 'react-icons/bi';
 import { renderedBodyTextSelector } from '../Recoil/bodyText';
 import { allCTAButtonSelector, allQuickReplyButtonSelector, buttonsTypeSelector, CTAButtonIndex, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons';
 import { normalizedFooterTextSelector } from '../Recoil/footerText';
 import { headerImageSelector, headerTextSelector, headerTypeSelector, headerVideoSelector } from '../Recoil/header';
-import { BiLinkExternal } from '@react-icons/bi/BiLinkExternal';
-import { BsTelephoneFill } from '@react-icons/all-files/bs/BsTelephoneFill';
+// import { BiLinkExternal } from '@react-icons/bi/BiLinkExternal';
+// import { BsTelephoneFill } from '@react-icons/all-files/bs/BsTelephoneFill';
 import tw, { styled } from 'twin.macro';
 
 import AspectRatio from 'react-aspect-ratio';

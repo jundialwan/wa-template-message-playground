@@ -2,6 +2,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { companyNameSelector } from '../../Recoil/biodata/company';
 import { companyImageSelector } from '../../Recoil/biodata/companyImg';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const HeaderWhatsApp = () => {
   const companyName = useRecoilValue(companyNameSelector);

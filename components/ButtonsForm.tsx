@@ -4,6 +4,7 @@ import { buttonsTypeSelector, CTAButtonIndex, ctaButtonSelector, QuickReplyButto
 import RadioButtonItem from './RadioButtonItem';
 import { Switch } from '@headlessui/react';
 import QuickReplyButtonsInput from './QuickReplyButtonsInput';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const ButtonsForm: FC = () => {
   const [buttonType, setButtonType] = useRecoilState(buttonsTypeSelector);
@@ -50,8 +51,8 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex }> = ({ order }) => {
       <div tw='gap-1'>
         <span tw='text-xs font-semibold text-black'>{thisButton.type === 'call-phone' ? 'Call Phone Number' : 'Visit Website'}</span>
         <div tw='flex flex-row gap-1 items-center border px-3 py-2 rounded-lg'>
-          <Switch checked={thisButton?.enabled} onChange={onToggleChange} tw={`${thisButton?.enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
-            <span tw={`${thisButton?.enabled ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+          <Switch checked={thisButton?.enabled} onChange={onToggleChange} css={[tw`relative inline-flex items-center h-4 rounded-full w-7 transition-all`, thisButton?.enabled ? tw`bg-blue-600` : tw`bg-gray-200`]}>
+            <span css={[tw`transition-all inline-block w-2 h-2 transform bg-white rounded-full`, thisButton?.enabled ? 'translate-x-4' : 'translate-x-1']} />
           </Switch>
 
           <div tw='flex flex-col'>

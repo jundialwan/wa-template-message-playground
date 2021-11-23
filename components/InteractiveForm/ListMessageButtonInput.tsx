@@ -1,4 +1,5 @@
 import { Switch } from '@headlessui/react';
+import tw, { styled, css, theme } from 'twin.macro';
 
 import { FC, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -19,8 +20,8 @@ const ListMessageButtonInput: FC<{ order: ListMessageIndex }> = ({ order }) => {
         <div tw='flex flex-row gap-1 items-center justify-center border px-3 py-2 rounded-lg'>
           {/* active inactive */}
           <div>
-            <Switch checked={thisButton?.enabled} onChange={onToggleChange} tw={`${thisButton?.enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
-              <span tw={`${thisButton?.enabled ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+            <Switch checked={thisButton?.enabled} onChange={onToggleChange} css={[tw`relative inline-flex items-center h-4 rounded-full w-7 transition-all`, thisButton?.enabled ? tw`bg-blue-600` : tw`bg-gray-200`]}>
+              <span css={[tw`transition-all inline-block w-2 h-2 transform bg-white rounded-full`, thisButton?.enabled ? 'translate-x-4' : 'translate-x-1']} />
             </Switch>
           </div>
 

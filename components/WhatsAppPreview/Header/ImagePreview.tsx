@@ -2,6 +2,7 @@ import { FC } from 'react';
 import AspectRatio from 'react-aspect-ratio';
 import { BsImage } from 'react-icons/bs';
 import { HeaderIllustration } from '../../TemplateMessagePreview';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const ImagePreview: FC<{ headerPathImage?: string }> = ({ headerPathImage }) => {
   if (headerPathImage && headerPathImage?.length > 1) {

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { footerTextSelector } from '../Recoil/footerText';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const FooterForm: FC<{ value?: string }> = ({ value }) => {
   const [footerText, setFooterText] = useRecoilState(footerTextSelector);

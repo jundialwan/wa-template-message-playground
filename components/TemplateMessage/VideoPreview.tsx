@@ -2,6 +2,7 @@ import AspectRatio from 'react-aspect-ratio';
 import { FC } from 'react';
 import { BsPlay } from 'react-icons/bs';
 import { HeaderIllustration } from '../TemplateMessagePreview';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const VideoPreview: FC<{ headerPathVideo?: string }> = ({ headerPathVideo }) => {
   if (headerPathVideo && headerPathVideo?.length > 1) {

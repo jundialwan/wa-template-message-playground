@@ -3,6 +3,7 @@ import { BsFileEarmarkText } from 'react-icons/bs';
 import { StyledUserMessage } from '../TemplateMessage/UserMessage';
 import VideoPreview from '../TemplateMessage/VideoPreview';
 import { ChatBot, CTAButton, HeaderIllustration, ImagePreview, QuickReplyButton } from '../TemplateMessagePreview';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const UserBubble: FC<{ message: any }> = ({ message }) => {
   console.log('Message User', message);

@@ -1,5 +1,5 @@
-import { BsTelephoneFill } from '@react-icons/all-files/bs/BsTelephoneFill';
-import { BiLinkExternal } from '@react-icons/bi/BiLinkExternal';
+import { BsTelephoneFill } from 'react-icons/bs';
+import { BiLinkExternal } from 'react-icons/bi';
 import { Transition } from '@headlessui/react';
 import React, { FC, useEffect, useState } from 'react';
 import { BsFileEarmarkText } from 'react-icons/bs';

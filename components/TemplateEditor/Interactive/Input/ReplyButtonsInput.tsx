@@ -3,6 +3,7 @@ import { Switch } from '@headlessui/react';
 import { ReplyButtonSelector } from '../../../../Recoil/interactiveButton';
 import { useRecoilState } from 'recoil';
 import { listMessageAtom } from '../../../../Recoil/listMessage';
+import tw, { styled, css, theme } from 'twin.macro';
 
 type ReplyButtonIndex = 0 | 1 | 2;
 
@@ -63,8 +64,8 @@ const QuickReplyButtonInput: FC<{ order: ReplyButtonIndex; messageId: number; me
 
   return (
     <div tw='flex flex-row gap-1 items-center'>
-      <Switch disabled={order === 0} checked={buttonSwitch} onChange={(e) => handleToggleChange(e, messageId)} tw={`${buttonSwitch ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
-        <span tw={`${buttonSwitch ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+      <Switch disabled={order === 0} checked={buttonSwitch} onChange={(e) => handleToggleChange(e, messageId)} css={[tw`relative inline-flex items-center h-4 rounded-full w-7 transition-all`, buttonSwitch ? tw`bg-blue-600` : tw`bg-gray-200`]}>
+        <span css={[tw`transition-all inline-block w-2 h-2 transform bg-white rounded-full`, buttonSwitch ? 'translate-x-4' : 'translate-x-1']} />
       </Switch>
       <input type='text' name={`reply-btn-${order}`} id={`reply-btn-${order}`} placeholder={`Reply button ${order + 1}`} value={buttonText} onChange={(e) => handleTextChange(e, messageId)} tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
       <span tw='text-xs'>{buttonText.length}/20</span>

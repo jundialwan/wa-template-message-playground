@@ -7,6 +7,7 @@ import { headerAtom, headerTypeSelector } from '../../Recoil/header';
 import { interactiveButtonsAtom, titleInteractiveButtonsAtom } from '../../Recoil/interactiveButton';
 import { listMessageAtom, messageIdAtom } from '../../Recoil/listMessage';
 import { senderTypeSelector } from '../../Recoil/senderText';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const SubmitForm: FC = () => {
   let id = 0;

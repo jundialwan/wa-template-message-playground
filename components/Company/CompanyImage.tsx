@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { companyImageSelector } from '../../Recoil/biodata/companyImg';
 import { headerImageSelector } from '../../Recoil/header';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const CompanyImage: FC = () => {
   const [companyPathImage, setCompanyImage] = useRecoilState(companyImageSelector);

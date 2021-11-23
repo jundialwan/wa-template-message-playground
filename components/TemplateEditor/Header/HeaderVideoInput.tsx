@@ -3,6 +3,7 @@ import { FC, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { headerImageSelector } from '../../../Recoil/header';
 import { listMessageAtom } from '../../../Recoil/listMessage';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const HeaderVideoInput: FC<{ messageId: number; headerVideoPath: string }> = ({ messageId, headerVideoPath }) => {
   // const [headerPathImage, setHeaderPathVideo] =
@@ -67,7 +68,7 @@ const HeaderVideoInput: FC<{ messageId: number; headerVideoPath: string }> = ({ 
       {headerVideoPath?.length > 1 ? (
         <div tw='flex w-full items-start mt-4'>
           <div tw='w-7/12'>
-            <AspectRatio maxW='400px' ratio={4 / 3}>
+            <AspectRatio tw='max-w-[400px]' ratio={4 / 3}>
               <video tw='w-full h-full' controls>
                 <source src={headerVideoPath} type='video/mp4' />
               </video>

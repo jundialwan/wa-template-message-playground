@@ -4,6 +4,7 @@ import { FC, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { interactiveButtonSelector } from '../../../../Recoil/interactiveButton';
 import { listMessageAtom } from '../../../../Recoil/listMessage';
+import tw, { styled, css, theme } from 'twin.macro';
 
 type ListMessageIndex = 0 | 1 | 2 | 3 | 4;
 
@@ -77,8 +78,8 @@ const ListMessageButtonInput: FC<{ order: ListMessageIndex; messageId: number; m
         <div tw='flex flex-row gap-1 items-center justify-center border px-3 py-2 rounded-lg'>
           {/* active inactive */}
           <div>
-            <Switch checked={buttonSwitch} onChange={(e) => handleToggleChange(e, messageId)} tw={`${buttonSwitch ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex items-center h-4 rounded-full w-7 transition-all`}>
-              <span tw={`${buttonSwitch ? 'translate-x-4' : 'translate-x-1'} transition-all inline-block w-2 h-2 transform bg-white rounded-full`} />
+            <Switch checked={buttonSwitch} onChange={(e) => handleToggleChange(e, messageId)} css={[tw`relative inline-flex items-center h-4 rounded-full w-7 transition-all`, buttonSwitch ? tw`bg-blue-600` : tw`bg-gray-200`]}>
+              <span css={[tw`transition-all inline-block w-2 h-2 transform bg-white rounded-full`, buttonSwitch ? 'translate-x-4' : 'translate-x-1']} />
             </Switch>
           </div>
 

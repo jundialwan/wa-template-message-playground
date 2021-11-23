@@ -2,6 +2,7 @@ import AspectRatio from 'react-aspect-ratio';
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { headerImageSelector } from '../../Recoil/header';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const HeaderImageInput: FC = () => {
   const [headerPathImage, setHeaderPathImage] = useRecoilState(headerImageSelector);
@@ -19,7 +20,7 @@ const HeaderImageInput: FC = () => {
       {headerPathImage?.length > 1 ? (
         <div tw='flex w-full items-start mt-4'>
           <div tw='w-7/12'>
-            <AspectRatio maxW='400px' ratio={4 / 3}>
+            <AspectRatio tw='max-w-[400px]' ratio={4 / 3}>
               <img src={headerPathImage} alt='Image Bot' tw='w-full h-full' />
             </AspectRatio>
           </div>

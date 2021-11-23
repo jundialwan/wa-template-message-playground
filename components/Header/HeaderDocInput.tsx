@@ -2,6 +2,7 @@ import AspectRatio from 'react-aspect-ratio';
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { headerVideoSelector } from '../../Recoil/header';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const HeaderDocInput: FC<{ value?: string }> = ({ value }) => {
   const [headerPathVideo, setHeaderVideoPath] = useRecoilState(headerVideoSelector);
@@ -17,7 +18,7 @@ const HeaderDocInput: FC<{ value?: string }> = ({ value }) => {
       {headerPathVideo?.length > 1 ? (
         <div tw='flex w-full items-start mt-4'>
           <div tw='w-7/12'>
-            <AspectRatio maxW='400px' ratio={4 / 3}>
+            <AspectRatio tw='max-w-[400px]' ratio={4 / 3}>
               <video tw='w-full h-full' controls>
                 <source src={headerPathVideo} type='video/mp4' />
               </video>

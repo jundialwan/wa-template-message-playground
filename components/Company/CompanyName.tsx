@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { companyNameSelector } from '../../Recoil/biodata/company';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const CompanyName: FC<{ value?: string }> = ({ value }) => {
   const [companyText, setCompanyText] = useRecoilState(companyNameSelector);

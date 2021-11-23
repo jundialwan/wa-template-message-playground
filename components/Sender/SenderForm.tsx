@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { senderTypeSelector } from '../../Recoil/senderText';
 import RadioButtonItem from '../RadioButtonItem';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const SenderForm: FC = () => {
   const [senderType, setSenderType] = useRecoilState(senderTypeSelector);

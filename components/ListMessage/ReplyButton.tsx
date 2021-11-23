@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useRecoilValue } from 'recoil';
 import { allReplyButtonSelector, ReplyButtonIndex } from '../../Recoil/interactiveButton';
+import tw, { styled, css, theme } from 'twin.macro';
 
 const ReplyButton: FC<{ order: ReplyButtonIndex }> = ({ order }) => {
   const allButtons = useRecoilValue(allReplyButtonSelector);

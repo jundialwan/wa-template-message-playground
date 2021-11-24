@@ -17,6 +17,9 @@ import WhatsAppPreview from '../components/WhatsAppPreview';
 import InteractiveForm from '../components/InteractiveForm';
 import CompanyName from '../components/Company/CompanyName';
 import CompanyImage from '../components/Company/CompanyImage';
+import Header from '../components/Layout/Header';
+import Card from '../components/Common/Card';
+import Sidebar from '../components/Layout/Sidebar';
 
 /**
  * Home
@@ -30,16 +33,9 @@ const Home: NextPage = () => {
   return (
     <div tw='p-3 h-screen bg-gray-100 flex flex-col gap-2 font-sans antialiased text-gray-500'>
       <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2 font-semibold text-black'>WhatsApp Template Message Playground</div>
+      <Header />
       <div tw='grid md:grid-cols-12 gap-3 grid-cols-1 text-sm' style={{ height: 'calc(100vh - 72px)' }}>
-        <div tw='col-span-2 border-solid border shadow-sm rounded-sm bg-white md:h-full p-2'>
-          <SectionHeading title='Template Examples' tw='mb-2' />
-          <div tw='rounded-sm bg-white p-1 pl-2 hover:bg-gray-100 cursor-pointer' onClick={() => setTab('company')}>
-            Company Editor
-          </div>
-          <div tw='rounded-sm bg-white p-1 pl-2 hover:bg-gray-100 cursor-pointer' onClick={() => setTab('editor')}>
-            WhatsApp Editor
-          </div>
-        </div>
+        <Sidebar />
         {tab === 'editor' ? (
           <div tw='col-span-7 flex flex-col md:h-full gap-1 overflow-auto'>
             <TemplateEditor />

@@ -93,7 +93,7 @@ const QuickReplyButton: FC<{ order: QuickReplyButtonIndex; message: any }> = ({ 
 
   if (thisButton.enabled) {
     return (
-      <ButtonWhatsApp order={order} allButtons={allButtons}>
+      <ButtonWhatsApp order={order} allButtons={message}>
         {thisButton.text}
       </ButtonWhatsApp>
     );

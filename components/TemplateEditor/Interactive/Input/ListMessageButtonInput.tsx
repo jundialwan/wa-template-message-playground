@@ -78,8 +78,28 @@ const ListMessageButtonInput: FC<{ order: ListMessageIndex; messageId: number; m
         <div tw='flex flex-row gap-1 items-center justify-center border px-3 py-2 rounded-lg'>
           {/* active inactive */}
           <div>
-            <Switch checked={buttonSwitch} onChange={(e) => handleToggleChange(e, messageId)} css={[tw`relative inline-flex items-center h-4 rounded-full w-7 transition-all`, buttonSwitch ? tw`bg-blue-600` : tw`bg-gray-200`]}>
-              <span css={[tw`transition-all inline-block w-2 h-2 transform bg-white rounded-full`, buttonSwitch ? 'translate-x-4' : 'translate-x-1']} />
+            <Switch
+              checked={buttonSwitch}
+              onChange={(e) => handleToggleChange(e, messageId)}
+              css={[
+                tw`h-[18px] w-[34px]
+            relative inline-flex flex-shrink-0
+            border-2 border-transparent rounded-full cursor-pointer
+            transition-colors ease-in-out duration-200
+            focus:outline-none focus-visible:(ring-2 ring-white ring-opacity-75)`,
+                buttonSwitch ? tw`bg-blue-700` : tw`bg-gray-200`,
+              ]}
+            >
+              <span
+                aria-hidden='true'
+                css={[
+                  tw`h-[14px] w-[14px]
+              pointer-events-none inline-block
+              rounded-full bg-white shadow-lg transform ring-0
+              transition ease-in-out duration-200`,
+                  buttonSwitch ? tw`translate-x-4` : tw`translate-x-0`,
+                ]}
+              />
             </Switch>
           </div>
 

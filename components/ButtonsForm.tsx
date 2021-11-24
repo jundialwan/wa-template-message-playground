@@ -51,8 +51,28 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex }> = ({ order }) => {
       <div tw='gap-1'>
         <span tw='text-xs font-semibold text-black'>{thisButton.type === 'call-phone' ? 'Call Phone Number' : 'Visit Website'}</span>
         <div tw='flex flex-row gap-1 items-center border px-3 py-2 rounded-lg'>
-          <Switch checked={thisButton?.enabled} onChange={onToggleChange} css={[tw`relative inline-flex items-center h-4 rounded-full w-7 transition-all`, thisButton?.enabled ? tw`bg-blue-600` : tw`bg-gray-200`]}>
-            <span css={[tw`transition-all inline-block w-2 h-2 transform bg-white rounded-full`, thisButton?.enabled ? 'translate-x-4' : 'translate-x-1']} />
+          <Switch
+            checked={thisButton?.enabled}
+            onChange={onToggleChange}
+            css={[
+              tw`h-[18px] w-[34px]
+            relative inline-flex flex-shrink-0
+            border-2 border-transparent rounded-full cursor-pointer
+            transition-colors ease-in-out duration-200
+            focus:outline-none focus-visible:(ring-2 ring-white ring-opacity-75)`,
+              thisButton?.enabled ? tw`bg-blue-700` : tw`bg-gray-200`,
+            ]}
+          >
+            <span
+              aria-hidden='true'
+              css={[
+                tw`h-[14px] w-[14px]
+              pointer-events-none inline-block
+              rounded-full bg-white shadow-lg transform ring-0
+              transition ease-in-out duration-200`,
+                thisButton?.enabled ? tw`translate-x-4` : tw`translate-x-0`,
+              ]}
+            />
           </Switch>
 
           <div tw='flex flex-col'>

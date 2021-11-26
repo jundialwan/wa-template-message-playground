@@ -10,6 +10,18 @@ module.exports = {
       },
       colors: {
         leaf: '#E1FFC7',
+        leaf: {
+          50: '#fefffc',
+          100: '#fcfff9',
+          200: '#f8fff1',
+          300: '#f3ffe9',
+          400: '#eaffd8',
+          500: '#e1ffc7',
+          600: '#cbe6b3',
+          700: '#a9bf95',
+          800: '#879977',
+          900: '#6e7d62',
+        },
         whatsapp: {
           500: '#00796B',
           600: '#006C60',

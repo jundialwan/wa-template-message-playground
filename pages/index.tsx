@@ -20,6 +20,7 @@ import CompanyImage from '../components/Company/CompanyImage';
 import Header from '../components/Layout/Header';
 import Card from '../components/Common/Card';
 import Sidebar from '../components/Layout/Sidebar';
+import Mainpage from '../components/FlowDesign/Mainpage';
 
 /**
  * Home
@@ -36,65 +37,7 @@ const Home: NextPage = () => {
       <Header />
       <div tw='grid md:grid-cols-12 gap-3 grid-cols-1 text-sm' style={{ height: 'calc(100vh - 72px)' }}>
         <Sidebar />
-        {tab === 'editor' ? (
-          <div tw='col-span-7 flex flex-col md:h-full gap-1 overflow-auto'>
-            <TemplateEditor />
-            <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Type User' />
-              <SectionSubtitle subtitle='Choose between user and bot' />
-              <SenderForm />
-            </div>
-            <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Header (optional)' />
-              <SectionSubtitle subtitle="Choose which type of media you'll use for this header" />
-
-              <HeaderForm />
-            </div>
-            <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Body' />
-              <SectionSubtitle subtitle='Enter the text for your message. Parameter format: {{1}}, {{2}}, and so on.' />
-
-              <BodyForm />
-            </div>
-            <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Footer (optional)' />
-              <SectionSubtitle subtitle='Add a short line of text to the bottom of your message. Max: 60 chars.' />
-
-              <FooterForm />
-            </div>
-            <div tw='border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Buttons (optional)' />
-              <SectionSubtitle subtitle="Create buttons that let customers respond to your message. Available: 'Call to action' and 'Quick Reply' button." />
-
-              <ButtonsForm />
-            </div>
-            <div tw='border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Interactive Message (optional)' />
-              <SectionSubtitle subtitle="Create interactive message that let customers respond to your message. Available: 'List Message' and 'Reply Button' button." />
-
-              <InteractiveForm />
-            </div>
-            <div tw='border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Submit Your Chat Form' />
-              <SectionSubtitle subtitle='Remember to submit form ' />
-              <SubmitForm />
-            </div>
-          </div>
-        ) : (
-          <div tw='col-span-7 flex flex-col md:h-full gap-1 overflow-auto'>
-            <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Image Company' />
-              <SectionSubtitle subtitle='Choose Image Company' />
-              <CompanyImage />
-            </div>
-            <div tw='flex-none border-solid border shadow-sm rounded-sm bg-white p-2'>
-              <SectionHeading title='Name Company' />
-              <SectionSubtitle subtitle='Write Name Company' />
-
-              <CompanyName />
-            </div>
-          </div>
-        )}
+        <Mainpage />
 
         <div tw='col-span-3 flex flex-col md:h-full gap-3'>
           <WhatsAppPreview />

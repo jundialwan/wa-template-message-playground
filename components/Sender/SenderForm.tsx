@@ -12,7 +12,7 @@ const SenderForm: FC = () => {
       <div tw='flex flex-row'>
         <RadioButtonItem isChecked={senderType === 'bot'} value='bot' id='bot-sender' label='Bot' onChange={onSenderTypeChange} />
         <RadioButtonItem isChecked={senderType === 'user'} value='user' id='user-sender' label='User' onChange={onSenderTypeChange} />
-        <RadioButtonItem isChecked={senderType === 'none'} value='none' id='hidden-sender' label='Hidden Message' onChange={onSenderTypeChange} />
+        {/* <RadioButtonItem isChecked={senderType === 'none'} value='none' id='hidden-sender' label='Hidden Message' onChange={onSenderTypeChange} /> */}
       </div>
     </>
   );

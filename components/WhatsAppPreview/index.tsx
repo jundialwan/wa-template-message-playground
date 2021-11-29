@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { listMessageAtom } from '../../Recoil/listMessage';
 import { senderTypeSelector } from '../../Recoil/senderText';
-import { PreviewComponent } from '../LogiclessComponents';
+import { PreviewComponent } from '../Common/LogiclessComponents';
 import UserMessage from '../TemplateMessage/UserMessage';
 import TemplateMessagePreview from '../TemplateMessagePreview';
 import BotBubble from './BotBubble';

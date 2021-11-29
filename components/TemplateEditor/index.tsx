@@ -3,7 +3,7 @@ import React, { FC, Fragment, useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import tw, { styled, css, theme } from 'twin.macro';
 
-import { SectionHeading, SectionSubtitle } from '../LogiclessComponents';
+import { SectionHeading, SectionSubtitle } from '../Common/LogiclessComponents';
 import HeaderForm from './Header/HeaderForm';
 import BodyForm from './Body/BodyForm';
 import FooterForm from './Footer/FooterForm';

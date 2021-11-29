@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { bodyTextAtom } from '../../Recoil/bodyText';
-import { buttonsAtom } from '../../Recoil/buttons';
-import { footerTextSelector } from '../../Recoil/footerText';
-import { headerAtom, headerTypeSelector } from '../../Recoil/header';
-import { interactiveButtonsAtom, titleInteractiveButtonsAtom } from '../../Recoil/interactiveButton';
-import { listMessageAtom, messageIdAtom } from '../../Recoil/listMessage';
-import { senderTypeSelector } from '../../Recoil/senderText';
+import { bodyTextAtom } from '@/Recoil/bodyText';
+import { buttonsAtom } from '@/Recoil/buttons';
+import { footerTextSelector } from '@/Recoil/footerText';
+import { headerAtom, headerTypeSelector } from '@/Recoil/header';
+import { interactiveButtonsAtom, titleInteractiveButtonsAtom } from '@/Recoil/interactiveButton';
+import { listMessageAtom, messageIdAtom } from '@/Recoil/listMessage';
+import { senderTypeSelector } from '@/Recoil/senderText';
 import tw, { styled, css, theme } from 'twin.macro';
 
 const SubmitForm: FC = () => {

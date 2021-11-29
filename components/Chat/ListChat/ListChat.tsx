@@ -1,18 +1,22 @@
 import { Disclosure } from '@headlessui/react';
 import React from 'react';
 import Transition from '../../Common/Transition';
-import { SectionHeading, SectionSubtitle } from '../../LogiclessComponents';
+import { SectionHeading, SectionSubtitle } from '../../Common/LogiclessComponents';
 import tw from 'twin.macro';
 import { BiChevronUpStyled } from '../../FlowDesign/Mainpage';
 import SenderForm from '../../Sender/SenderForm';
 import BodyForm from '../../BodyForm';
-import HeaderForm from '../../Header/HeaderForm';
+import HeaderForm from '../Form/Bot/PushMessage/Header/HeaderForm';
 import { useRecoilValue } from 'recoil';
-import { senderTypeSelector } from '../../../Recoil/senderText';
+import { senderTypeSelector } from '@/Recoil/senderText';
 import ContextBot from '../Form/User/ContextBot';
 import MessageType from '../Form/Bot/MessageType';
+import PushMessage from '../Form/Bot/PushMessage';
+import ChatbotMessage from '../Form/Bot/ChatbotMessage';
+import { messageTypeSelector } from '@/Recoil/messageType';
 const ListChat = () => {
   const senderType = useRecoilValue(senderTypeSelector);
+  const messageType = useRecoilValue(messageTypeSelector);
   return (
     <div tw='flex flex-col w-full'>
       <Disclosure>
@@ -23,7 +27,7 @@ const ListChat = () => {
               <BiChevronUpStyled open={open} />
             </Disclosure.Button>
             <Transition show={open} {...transitionProps}>
-              <Disclosure.Panel static tw='pt-4 pb-2 text-sm text-gray-500 bg-purple-200 rounded-lg divide-y-2'>
+              <Disclosure.Panel static tw='pt-4 pb-2 text-sm text-gray-500 rounded-lg divide-y-2'>
                 <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Type User' />
                   <SectionSubtitle subtitle='Choose between user and bot' />
@@ -32,16 +36,17 @@ const ListChat = () => {
                 {senderType === 'bot' ? (
                   <>
                     <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
+                      <MessageType />
+                    </div>
+                    <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>{messageType === 'pushMessage' ? <PushMessage /> : <ChatbotMessage />}</div>
+                  </>
+                ) : (
+                  <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
+                    <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
                       <SectionHeading title='Header (optional)' />
                       <SectionSubtitle subtitle="Choose which type of media you'll use for this header" />
                       <HeaderForm />
                     </div>
-                    <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
-                      <MessageType />
-                    </div>
-                  </>
-                ) : (
-                  <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
                     <SectionHeading title='Body' />
                     <SectionSubtitle subtitle='Enter the text for your message. Parameter format: {{1}}, {{2}}, and so on.' />
                     <BodyForm />

@@ -4,7 +4,7 @@ import { interactiveButtonsTypeSelector } from '../Recoil/interactiveButton';
 import ListMessageButtonInput from './InteractiveForm/ListMessageButtonInput';
 import ReplyButtonsInput from './InteractiveForm/ReplyButtonInput';
 import TitleListMessage from './InteractiveForm/TitleMessage';
-import RadioButtonItem from './RadioButtonItem';
+import RadioButtonItem from './Common/RadioButtonItem';
 import tw, { styled, css, theme } from 'twin.macro';
 
 const InteractiveForm: FC = () => {

@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, FC } from 'react';
 import { useRecoilState } from 'recoil';
-import RadioButtonItem from '../../RadioButtonItem';
+import RadioButtonItem from '../../Common/RadioButtonItem';
 import HeaderImageInput from './HeaderImageInput';
 import HeaderTextInput from './HeaderTextInput';
 import HeaderVideoInput from './HeaderVideoInput';

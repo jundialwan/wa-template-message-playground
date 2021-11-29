@@ -1,7 +1,7 @@
 import React, { ChangeEventHandler, FC, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { CTAButtonIndex, QuickReplyButtonIndex, quickReplyButtonSelector } from '../../../Recoil/buttons';
-import RadioButtonItem from '../../RadioButtonItem';
+import RadioButtonItem from '../../Common/RadioButtonItem';
 import { Switch } from '@headlessui/react';
 import { listMessageAtom } from '../../../Recoil/listMessage';
 import tw, { styled, css, theme } from 'twin.macro';
@@ -151,7 +151,15 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex; messageId: number; buttonCta: 
               </span>
             </div>
 
-            <input type='text' name={`cta-context-${order}`} id={`cta-context-${order}` + messageId} value={buttonCta[order].type === 'call-phone' ? buttonCta[order].phone : buttonCta[order].url} onChange={(e) => handleCTAContext(e, messageId)} tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' disabled />
+            <input
+              type='text'
+              name={`cta-context-${order}`}
+              id={`cta-context-${order}` + messageId}
+              value={buttonCta[order].type === 'call-phone' ? buttonCta[order].phone : buttonCta[order].url}
+              onChange={(e) => handleCTAContext(e, messageId)}
+              tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600'
+              disabled
+            />
           </div>
         </div>
       </div>
@@ -245,7 +253,15 @@ const QuickReplyButtonInput: FC<{ order: QuickReplyButtonIndex; messageId: numbe
         />
       </Switch>
 
-      <input type='text' name={`reply-${order}`} id={`reply-${order}` + messageId} placeholder={`Reply button ${order + 1}`} value={buttonText} onChange={(e) => handleTextChange(e, messageId)} tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+      <input
+        type='text'
+        name={`reply-${order}`}
+        id={`reply-${order}` + messageId}
+        placeholder={`Reply button ${order + 1}`}
+        value={buttonText}
+        onChange={(e) => handleTextChange(e, messageId)}
+        tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600'
+      />
       <span tw='text-xs'>{buttonText.length}/20</span>
     </div>
   );

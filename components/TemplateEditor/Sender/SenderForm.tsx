@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler, FC, useState } from 'react';
-import RadioButtonItem from '../../RadioButtonItem';
+import RadioButtonItem from '../../Common/RadioButtonItem';
 import tw, { styled, css, theme } from 'twin.macro';
 
 type SenderFormProps = {

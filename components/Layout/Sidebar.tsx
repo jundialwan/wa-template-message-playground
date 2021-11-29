@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import Card from '../Common/Card';
-import { SectionHeading } from '../LogiclessComponents';
+import { SectionHeading } from '../Common/LogiclessComponents';
 import 'twin.macro';
 import Button from '../Common/Button/Button';
 import { GoKebabVertical } from 'react-icons/go';

@@ -5,7 +5,7 @@ import { listMessageAtom } from '../../../Recoil/listMessage';
 import ListMessageButtonInput from './Input/ListMessageButtonInput';
 import ReplyButtonsInput from './Input/ReplyButtonsInput';
 import TitleListMessage from './Input/TitleListMessage';
-import RadioButtonItem from '../../RadioButtonItem';
+import RadioButtonItem from '../../Common/RadioButtonItem';
 import tw, { styled, css, theme } from 'twin.macro';
 
 const InteractiveForm: FC<{ buttonType: string; onButtonTypeChange: ChangeEventHandler<HTMLInputElement>; messageId: number; titleInteractive: string; interactiveMessage: any }> = ({ buttonType, onButtonTypeChange, messageId, titleInteractive, interactiveMessage }) => {

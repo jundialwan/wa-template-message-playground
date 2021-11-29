@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import { buttonsTypeSelector, CTAButtonIndex, ctaButtonSelector, QuickReplyButtonIndex, quickReplyButtonSelector } from '../Recoil/buttons';
-import RadioButtonItem from './RadioButtonItem';
+import RadioButtonItem from './Common/RadioButtonItem';
 import { Switch } from '@headlessui/react';
 import QuickReplyButtonsInput from './QuickReplyButtonsInput';
 import tw, { styled, css, theme } from 'twin.macro';
@@ -93,7 +93,14 @@ const CTAButtonInput: FC<{ order: CTAButtonIndex }> = ({ order }) => {
               </span>
             </div>
 
-            <input type='text' name={`cta-context-${order}`} id={`cta-context-${order}`} value={thisButton.type === 'call-phone' ? thisButton.phone : thisButton.url} onChange={onCTAContextChange} tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600' />
+            <input
+              type='text'
+              name={`cta-context-${order}`}
+              id={`cta-context-${order}`}
+              value={thisButton.type === 'call-phone' ? thisButton.phone : thisButton.url}
+              onChange={onCTAContextChange}
+              tw='border py-1 px-2 rounded text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-600'
+            />
           </div>
         </div>
       </div>

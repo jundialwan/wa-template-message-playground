@@ -5,7 +5,7 @@ import { Dialog, Disclosure } from '@headlessui/react';
 import { BiChevronUp } from 'react-icons/bi';
 import Transition from '../Common/Transition';
 import TemplateEditor from '../TemplateEditor';
-import { SectionHeading, SectionSubtitle } from '../LogiclessComponents';
+import { SectionHeading, SectionSubtitle } from '../Common/LogiclessComponents';
 import CompanyImage from '../Company/CompanyImage';
 import CompanyName from '../Company/CompanyName';
 import Button from '../Common/Button/Button';
@@ -13,7 +13,7 @@ import ListChat from '../Chat/ListChat/ListChat';
 
 const Mainpage = () => {
   return (
-    <Card tw='col-span-7 flex flex-col md:h-full gap-1 overflow-auto'>
+    <Card tw='col-span-7 flex flex-col md:h-[95%] gap-1 overflow-auto'>
       <SectionHeading title='Flow Design' tw='mb-2' />
       <Disclosure>
         {({ open }) => (

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useRecoilState } from 'recoil';
-import { headerTypeSelector } from '../../Recoil/header';
-import RadioButtonItem from '../RadioButtonItem';
+import { headerTypeSelector } from '../../../../../../Recoil/header';
+import RadioButtonItem from '../../../../../Common/RadioButtonItem';
 import HeaderImageInput from './HeaderImageInput';
 import HeaderTextInput from './HeaderTextInput';
 import HeaderVideoInput from './HeaderVideoInput';

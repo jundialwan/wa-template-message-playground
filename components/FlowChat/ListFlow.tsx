@@ -13,7 +13,7 @@ const ListFlow: FC<{ data: any }> = ({ data }) => {
         data.map((item: any, index: number) => {
           return (
             <div tw='rounded-sm bg-white p-1 pl-2 hover:bg-gray-100 flex items-center justify-between ' key={index}>
-              <p tw='cursor-default'>{item.flow}</p>
+              <p tw='cursor-default'>{item.name}</p>
               <Popover tw='relative'>
                 {({ open }) => (
                   <>

@@ -19,8 +19,46 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Data Structur Flow
+[ // list of flows
+  { // flow
+    id: '', // unique ID of flow
+    name: '', // flow name
+​
+    brand: {
+      imageUrl: '', // image url from CDN, probably bisa pake https://imagekit.io/ or Cloudinary
+      name: '' // brand name, i.e: Panorama JTB
+    },
+​
+    bubbles: [ // list of bubbles
+      { // bubble
+        id: '', // unique ID of bubble
+        order: 0, // bubble order 0 - N
+        chatBy: 'brand', // brand, customer
+        messageType: '', // push, bot, customer
+        bubbleType: '', // push, single-product, multi-product, text, image, video, list-messages, reply-buttons
+​
+        context: '', // bubble ID, only for customer - customer - text and customer - customer - image
+​
+        // payload of message, depends on the chatType and messageType
+      }
+    ]
+  }
+]
+​
+// posibility of combination chatBy, messageType, bubbleType
+// this combination will determine the WA preview
+​
+// brand - push - push
+​
+// brand - bot - text
+// brand - bot - image
+// brand - bot - video
+// brand - bot - document
+// brand - bot - list-message
+// brand - bot - reply-buttons
+// brand - bot - single-product
+// brand - bot - multi-product
+​
+// customer - customer - text 
+// customer - customer - image

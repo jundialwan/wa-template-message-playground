@@ -53,11 +53,11 @@ const BubbleTypeInput: FC = () => {
           <HeaderDocInput />
         </Wrapper>
       ) : null}
-      {headerType === 'location' ? <Wrapper>location</Wrapper> : null}
+      {/* {headerType === 'location' ? <Wrapper>location</Wrapper> : null}
       {headerType === 'listMessage' ? <Wrapper>listMessage</Wrapper> : null}
       {headerType === 'replyButton' ? <Wrapper>replyButton</Wrapper> : null}
       {headerType === 'singleProduct' ? <Wrapper>singleProduct</Wrapper> : null}
-      {headerType === 'multiPlroduct' ? <Wrapper>multiPlroduct</Wrapper> : null}
+      {headerType === 'multiPlroduct' ? <Wrapper>multiPlroduct</Wrapper> : null} */}
     </div>
   );
 };

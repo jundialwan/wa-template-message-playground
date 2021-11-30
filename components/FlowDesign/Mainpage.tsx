@@ -40,7 +40,7 @@ const Mainpage = () => {
         )}
       </Disclosure>
       <Button variant='primary' size='small' tw='w-full flex items-center justify-center mb-4'>
-        + Add New
+        + Add New Chat Bubble
       </Button>
       <ListChat />
       <TemplateEditor />

@@ -6,6 +6,12 @@ const customStyles = css`
   body {
     overflow: hidden;
   }
+  .font-semibold {
+    font-weight: 700;
+  }
+  .font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  }
   .radio-wa[type='radio']:checked {
     background-color: #fff;
     background-image: url("data:image/svg+xml,%3Csvg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10.5' cy='10.5' r='9.75' stroke='%23007867' stroke-width='1.5'/%3E%3Ccircle cx='10.5' cy='10.5' r='5.5' fill='%23007867'/%3E%3C/svg%3E%0A");

@@ -3,24 +3,15 @@ import type { NextPage } from 'next';
 import tw, { styled, css, theme } from 'twin.macro';
 import Head from 'next/head';
 import React from 'react';
-import FooterForm from '../components/FooterForm';
-import BodyForm from '../components/BodyForm';
-import { PreviewComponent, SectionHeading, SectionSubtitle } from '../components/Common/LogiclessComponents';
-import HeaderForm from '../components/Chat/Form/Bot/PushMessage/Header/HeaderForm';
-import ButtonsForm from '../components/ButtonsForm';
-import SenderForm from '../components/Sender/SenderForm';
+
 import { useRecoilValue } from 'recoil';
 import { listMessageAtom } from '../Recoil/listMessage';
-import SubmitForm from '../components/SubmitForm';
-import TemplateEditor from '../components/TemplateEditor';
-import WhatsAppPreview from '../components/WhatsAppPreview';
-import InteractiveForm from '../components/InteractiveForm';
-import CompanyName from '../components/Company/CompanyName';
-import CompanyImage from '../components/Company/CompanyImage';
-import Header from '../components/Layout/Header';
-import Card from '../components/Common/Card';
-import Sidebar from '../components/Layout/Sidebar';
-import Mainpage from '../components/FlowDesign/Mainpage';
+
+import WhatsAppPreview from '@/components/WhatsAppPreview';
+
+import Header from '@/components/Layout/Header';
+import Sidebar from '@/components/Layout/Sidebar';
+import Mainpage from '@/components/FlowDesign/Mainpage';
 
 /**
  * Home

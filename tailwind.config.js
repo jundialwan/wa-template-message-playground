@@ -9,8 +9,8 @@ module.exports = {
         'chat-bubble': '1px 1px 0px rgba(0, 0, 0, 0.1)',
       },
       colors: {
-        leaf: '#E1FFC7',
         leaf: {
+          DEFAULT: '#E1FFC7',
           50: '#fefffc',
           100: '#fcfff9',
           200: '#f8fff1',

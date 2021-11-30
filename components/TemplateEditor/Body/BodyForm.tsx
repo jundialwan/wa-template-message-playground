@@ -1,6 +1,5 @@
 import { ChangeEventHandler, FC } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { bodyTextAtom, bodyTextLengthSelector } from '../../../Recoil/bodyText';
+
 import tw, { styled, css, theme } from 'twin.macro';
 
 const BodyForm: FC<{

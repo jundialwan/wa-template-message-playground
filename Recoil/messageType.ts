@@ -2,7 +2,7 @@ import { atom, selector, DefaultValue } from 'recoil';
 
 export type MessageType = 'pushMessage' | 'chatbotMessage';
 export type MessageTypeComponent = {
-  messageType: string;
+  messageType: MessageType;
 };
 export const messageTypeAtom = atom<MessageTypeComponent>({
   key: 'messageType',

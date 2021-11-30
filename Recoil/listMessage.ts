@@ -2,7 +2,7 @@ import { SenderType } from './senderText';
 import { atom, atomFamily, DefaultValue, selector } from 'recoil';
 import { HeaderType } from './header';
 
-type ListMessage = {
+export type ListMessage = {
   id: number;
   sender: SenderType;
   type: HeaderType;

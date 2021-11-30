@@ -22,7 +22,7 @@ const PushMessage: FC = () => {
 
         <BodyForm />
       </div>
-      <div tw='flex-none shadow-sm rounded-sm bg-white p-2 '>
+      <div tw='flex-none shadow-sm rounded-sm bg-white p-2 mb-6'>
         <SectionHeading title='Footer (optional)' />
         <SectionSubtitle subtitle='Add a short line of text to the bottom of your message. Max: 60 chars.' />
 

@@ -2,9 +2,11 @@ import RadioButtonItem from '@/components/Common/RadioButtonItem';
 import React from 'react';
 import { SectionHeading, SectionSubtitle } from '@/components/Common/LogiclessComponents';
 import 'twin.macro';
+import { useRecoilState } from 'recoil';
+import { messageTypeSelector } from '@/Recoil/messageType';
 
 const MessageType = () => {
-  const [messageType, setMessageType] = React.useState('text');
+  const [messageType, setMessageType] = useRecoilState(messageTypeSelector);
   const onMessageTypeChange = (e: any) => setMessageType(e.target.value);
   return (
     <>

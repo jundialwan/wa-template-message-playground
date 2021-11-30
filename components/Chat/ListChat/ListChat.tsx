@@ -23,7 +23,7 @@ const ListChat = () => {
         {({ open }) => (
           <div>
             <Disclosure.Button tw='flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-purple-900 bg-purple-100 rounded-lg hover:bg-purple-200 focus:outline-none focus-visible:(ring ring-purple-500 ring-opacity-75)'>
-              <span>Brand</span>
+              <span>Chat Form</span>
               <BiChevronUpStyled open={open} />
             </Disclosure.Button>
             <Transition show={open} {...transitionProps}>

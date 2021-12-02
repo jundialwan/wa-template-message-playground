@@ -12,13 +12,56 @@ const defaultValueListFlow = [
       // list of bubbles
       {
         // bubble
-        id: '', // unique ID of bubble
+        id: '1', // unique ID of bubble
+        flowId: '',
         order: 0, // bubble order 0 - N
-        chatBy: 'brand', // brand, cus  tomer
-        messageType: '', // push, bot, customer
-        bubbleType: '', // push, single-product, multi-product, text, image, video, list-messages, reply-buttons
+        chatBy: 'brand', // brand, customer
+        bubbleType: '', // push, single-product, multi-product, normal
         context: '', // bubble ID, only for customer - customer - text and customer - customer - image
         // payload of message, depends on the chatType and messageType
+        header: {
+          type: '', // text, image, video, doc, none
+          url: '',
+          text: '',
+        },
+        body: {
+          text: '',
+        },
+        footer: {
+          text: '',
+        },
+        buttons: {
+          type: '', // quick-reply, cta, list-message, reply-buttons
+          // normal message
+          listMessage: {
+            buttonText: '',
+            menu: [
+              // max 10
+              {
+                title: '',
+                description: '',
+              },
+            ],
+          },
+          replyButtons: ['', '', ''],
+          // push message
+          quickReply: ['', '', ''],
+          cta: {
+            visitWebsite: {
+              buttonText: '',
+              order: 0,
+            },
+
+            callPhoneNumber: {
+              buttonText: '',
+              order: 1,
+            },
+          },
+        },
+        // single/multi product message
+        actions: {
+          buttonText: '',
+        },
       },
     ],
   },

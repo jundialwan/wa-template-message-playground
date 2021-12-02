@@ -3,10 +3,16 @@ import React, { FC, Fragment } from 'react';
 import { GoKebabVertical } from 'react-icons/go';
 import Transition from '../Common/Transition';
 import tw from 'twin.macro';
+import Button from '../Common/Button/Button';
+import { useRecoilState } from 'recoil';
+import { listFlowAtom } from '@/Recoil/Flow/ListFlow';
 
 const ListFlow: FC<{ data: any }> = ({ data }) => {
-  console.log('list flow ', data);
-
+  const [listFlow, setListFlow] = useRecoilState(listFlowAtom);
+  const handleRemoveFlow = (flowId: number) => {
+    let newListFlow = listFlow.filter((data: any) => data.id !== flowId);
+    setListFlow(newListFlow);
+  };
   return (
     <>
       {data.length > 0 &&
@@ -25,8 +31,10 @@ const ListFlow: FC<{ data: any }> = ({ data }) => {
                         <div tw='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
                           <div tw='relative bg-white px-3 py-4'>
                             <div tw='grid gap-3'>
-                              <p tw='text-sm font-medium text-gray-900'>Delete</p>
-                              <p tw='text-sm font-medium text-gray-900'>Duplicate</p>
+                              <Button type='button' size='small' variant='danger' tw='text-sm font-medium' onClick={() => handleRemoveFlow(item.id)}>
+                                Delete
+                              </Button>
+                              <p>{item.id}</p>
                             </div>
                           </div>
                         </div>

@@ -26,7 +26,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   { // flow
     id: '', // unique ID of flow
     name: '', // flow name
-​
     brand: {
       imageUrl: '', // image url from CDN, probably bisa pake https://imagekit.io/ or Cloudinary
       name: '' // brand name, i.e: Panorama JTB
@@ -39,9 +38,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
         order: 0, // bubble order 0 - N
         chatBy: 'brand', // brand, customer
         bubbleType: '', // push, single-product, multi-product, normal
-​
         context: '', // bubble ID, only for customer - customer - text and customer - customer - image
-​
         // payload of message, depends on the chatType and messageType
         header: {
           type: '', // text, image, video, doc, none

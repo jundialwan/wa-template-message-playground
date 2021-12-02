@@ -29,7 +29,7 @@ const WhatsAppPreview = () => {
             </div>
           );
         })}
-      {userType === 'bot' ? (
+      {userType === 'brand' ? (
         <div tw='md:pl-1 md:mr-auto 2xl:pl-4 2xl:mr-auto max-w-[260px] my-2'>
           <TemplateMessagePreview />
         </div>

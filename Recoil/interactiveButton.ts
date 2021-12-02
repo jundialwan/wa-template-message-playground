@@ -2,7 +2,7 @@ import { atom, DefaultValue, selector, selectorFamily } from 'recoil';
 
 type InteractiveButtonType = 'none' | 'listMessage' | 'reply';
 
-export type listMessageButtonIndex = 0 | 1 | 2 | 3 | 4;
+export type listMessageButtonIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 type listMessageButtonComponent = {
   enabled: boolean;
   title: string; //limit 30 string

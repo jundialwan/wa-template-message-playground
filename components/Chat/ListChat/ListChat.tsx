@@ -6,17 +6,19 @@ import tw from 'twin.macro';
 import { BiChevronUpStyled } from '../../FlowDesign/Mainpage';
 import SenderForm from '../../Sender/SenderForm';
 import BodyForm from '../../BodyForm';
-import HeaderForm from '../Form/Bot/PushMessage/Header/HeaderForm';
+import HeaderForm from '../Form/Brand/PushMessage/Header/HeaderForm';
 import { useRecoilValue } from 'recoil';
 import { senderTypeSelector } from '@/Recoil/senderText';
 import ContextBot from '../Form/User/ContextBot';
-import MessageType from '../Form/Bot/MessageType';
-import PushMessage from '../Form/Bot/PushMessage';
-import ChatbotMessage from '../Form/Bot/ChatbotMessage';
+import MessageType from '../Form/Brand/MessageType';
+import PushMessage from '../Form/Brand/PushMessage';
+import ChatbotMessage from '../Form/Brand/ChatbotMessage';
 import { messageTypeSelector } from '@/Recoil/messageType';
+import SenderTypeInput from '../Form/SenderTypeInput';
 const ListChat = () => {
   const senderType = useRecoilValue(senderTypeSelector);
   const messageType = useRecoilValue(messageTypeSelector);
+
   return (
     <div tw='flex flex-col w-full'>
       <Disclosure>
@@ -30,10 +32,10 @@ const ListChat = () => {
               <Disclosure.Panel static tw='pt-4 pb-2 text-sm text-gray-500 rounded-lg divide-y-2'>
                 <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
                   <SectionHeading title='Type User' />
-                  <SectionSubtitle subtitle='Choose between user and bot' />
-                  <SenderForm />
+                  <SectionSubtitle subtitle='Choose between user and brand' />
+                  <SenderTypeInput />
                 </div>
-                {senderType === 'bot' ? (
+                {senderType === 'brand' ? (
                   <>
                     <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
                       <MessageType />

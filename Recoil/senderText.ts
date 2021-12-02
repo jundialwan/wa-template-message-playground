@@ -1,6 +1,6 @@
 import { atom, DefaultValue, selector } from 'recoil';
 
-export type SenderType = 'bot' | 'user' | 'none';
+export type SenderType = 'bot' | 'user' | 'none' | 'brand';
 export type SenderComponent = {
   sender: SenderType;
 };

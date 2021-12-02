@@ -14,7 +14,7 @@ const defaultValueListFlow = [
         // bubble
         id: '', // unique ID of bubble
         order: 0, // bubble order 0 - N
-        chatBy: 'brand', // brand, customer
+        chatBy: 'brand', // brand, cus  tomer
         messageType: '', // push, bot, customer
         bubbleType: '', // push, single-product, multi-product, text, image, video, list-messages, reply-buttons
         context: '', // bubble ID, only for customer - customer - text and customer - customer - image

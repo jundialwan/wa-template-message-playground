@@ -7,7 +7,7 @@ import { BiChevronUpStyled } from '../../FlowDesign/Mainpage';
 import SenderForm from '../../Sender/SenderForm';
 import BodyForm from '../../BodyForm';
 import HeaderForm from '../Form/Brand/PushMessage/Header/HeaderForm';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { senderTypeSelector } from '@/Recoil/senderText';
 import ContextBot from '../Form/User/ContextBot';
 import MessageType from '../Form/Brand/MessageType';
@@ -15,10 +15,16 @@ import PushMessage from '../Form/Brand/PushMessage';
 import ChatbotMessage from '../Form/Brand/ChatbotMessage';
 import { messageTypeSelector } from '@/Recoil/messageType';
 import SenderTypeInput from '../Form/SenderTypeInput';
+import { listFlowAtom } from '@/Recoil/Flow/ListFlow';
+import { flowSelectedAtom } from '@/Recoil/Flow/SelectedFlow';
 const ListChat = () => {
   const senderType = useRecoilValue(senderTypeSelector);
   const messageType = useRecoilValue(messageTypeSelector);
-
+  const selectedFlow = useRecoilValue(flowSelectedAtom);
+  const [listFlow, setListFlow] = useRecoilState(listFlowAtom);
+  console.log('ListFlow ', listFlow);
+  console.log('selectedFlow ', selectedFlow);
+  console.log('Choose List ', listFlow[selectedFlow.id - 1]);
   return (
     <div tw='flex flex-col w-full'>
       <Disclosure>

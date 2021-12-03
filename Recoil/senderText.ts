@@ -8,7 +8,7 @@ export type SenderComponent = {
 const senderAtom = atom<SenderComponent>({
   key: 'sender',
   default: {
-    sender: 'bot',
+    sender: 'brand',
   },
 });
 

@@ -10,11 +10,14 @@ import CompanyImage from '../Company/CompanyImage';
 import CompanyName from '../Company/CompanyName';
 import Button from '../Common/Button/Button';
 import ListChat from '../Chat/ListChat/ListChat';
+import { useRecoilValue } from 'recoil';
+import { flowSelectedAtom } from '@/Recoil/Flow/SelectedFlow';
 
 const Mainpage = () => {
+  const selectedFlow = useRecoilValue(flowSelectedAtom);
   return (
     <Card tw='col-span-7 flex flex-col md:h-[95%] gap-1 overflow-auto'>
-      <SectionHeading title='Flow Design' tw='mb-2' />
+      <SectionHeading title={`Flow Design for ${selectedFlow.name}`} tw='mb-2' />
       <Disclosure>
         {({ open }) => (
           <div>

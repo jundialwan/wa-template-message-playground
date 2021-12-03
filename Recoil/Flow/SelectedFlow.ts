@@ -1,6 +1,14 @@
 import { atom } from 'recoil';
 
-export const flowSelectedAtom = atom<string>({
+type flowSelectedProps = {
+  id: number;
+  name: string;
+};
+
+export const flowSelectedAtom = atom<flowSelectedProps>({
   key: 'flowSelected',
-  default: '',
+  default: {
+    id: 1,
+    name: 'Checkout',
+  },
 });

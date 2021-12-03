@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 const defaultValueListFlow = [
   {
-    id: '1',
+    id: 1,
     name: 'Checkout',
     brand: {
       imageUrl: '', // image url from CDN, probably bisa pake https://imagekit.io/ or Cloudinary
@@ -12,7 +12,7 @@ const defaultValueListFlow = [
       // list of bubbles
       {
         // bubble
-        id: '1', // unique ID of bubble
+        id: 1, // unique ID of bubble
         flowId: '',
         order: 0, // bubble order 0 - N
         chatBy: 'brand', // brand, customer

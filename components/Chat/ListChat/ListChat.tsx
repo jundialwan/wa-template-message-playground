@@ -22,52 +22,58 @@ const ListChat = () => {
   const messageType = useRecoilValue(messageTypeSelector);
   const selectedFlow = useRecoilValue(flowSelectedAtom);
   const [listFlow, setListFlow] = useRecoilState(listFlowAtom);
+  const dataFlow = listFlow[selectedFlow.id - 1];
   console.log('ListFlow ', listFlow);
   console.log('selectedFlow ', selectedFlow);
   console.log('Choose List ', listFlow[selectedFlow.id - 1]);
   return (
     <div tw='flex flex-col w-full'>
-      <Disclosure>
-        {({ open }) => (
-          <div>
-            <Disclosure.Button tw='flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-purple-900 bg-purple-100 rounded-lg hover:bg-purple-200 focus:outline-none focus-visible:(ring ring-purple-500 ring-opacity-75)'>
-              <span>Chat Form</span>
-              <BiChevronUpStyled open={open} />
-            </Disclosure.Button>
-            <Transition show={open} {...transitionProps}>
-              <Disclosure.Panel static tw='pt-4 pb-2 text-sm text-gray-500 rounded-lg divide-y-2'>
-                <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
-                  <SectionHeading title='Type User' />
-                  <SectionSubtitle subtitle='Choose between user and brand' />
-                  <SenderTypeInput />
-                </div>
-                {senderType === 'brand' ? (
-                  <>
-                    <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
-                      <MessageType />
+      {dataFlow &&
+        dataFlow?.bubbles.map((dataBubbles: any, index: number) => (
+          <Disclosure key={index}>
+            {({ open }) => (
+              <div>
+                <Disclosure.Button tw='flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-purple-900 bg-purple-100 rounded-lg hover:bg-purple-200 focus:outline-none focus-visible:(ring ring-purple-500 ring-opacity-75)'>
+                  <span tw='capitalize'>
+                    Bubble {dataBubbles.chatBy} - {dataBubbles.id}
+                  </span>
+                  <BiChevronUpStyled open={open} />
+                </Disclosure.Button>
+                <Transition show={open} {...transitionProps}>
+                  <Disclosure.Panel static tw='pt-4 pb-2 text-sm text-gray-500 rounded-lg divide-y-2'>
+                    <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
+                      <SectionHeading title='Type User' />
+                      <SectionSubtitle subtitle='Choose between user and brand' />
+                      <SenderTypeInput bubbleId={dataBubbles.id} chatBy={dataBubbles.chatBy} flowId={selectedFlow.id} />
                     </div>
-                    <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>{messageType === 'pushMessage' ? <PushMessage /> : <ChatbotMessage />}</div>
-                  </>
-                ) : (
-                  <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
-                    <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
-                      <SectionHeading title='Header (optional)' />
-                      <SectionSubtitle subtitle="Choose which type of media you'll use for this header" />
-                      <HeaderForm />
-                    </div>
-                    <SectionHeading title='Body' />
-                    <SectionSubtitle subtitle='Enter the text for your message. Parameter format: {{1}}, {{2}}, and so on.' />
-                    <BodyForm />
-                    <div tw='mt-8' />
-                    <SectionSubtitle subtitle='Select context from previous bot (optional)' />
-                    <ContextBot />
-                  </div>
-                )}
-              </Disclosure.Panel>
-            </Transition>
-          </div>
-        )}
-      </Disclosure>
+                    {senderType === 'brand' ? (
+                      <>
+                        <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
+                          <MessageType />
+                        </div>
+                        <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>{messageType === 'pushMessage' ? <PushMessage /> : <ChatbotMessage />}</div>
+                      </>
+                    ) : (
+                      <div tw='flex-none  shadow-sm rounded-sm bg-white p-2'>
+                        <div tw='flex-none shadow-sm rounded-sm bg-white p-2'>
+                          <SectionHeading title='Header (optional)' />
+                          <SectionSubtitle subtitle="Choose which type of media you'll use for this header" />
+                          <HeaderForm />
+                        </div>
+                        <SectionHeading title='Body' />
+                        <SectionSubtitle subtitle='Enter the text for your message. Parameter format: {{1}}, {{2}}, and so on.' />
+                        <BodyForm />
+                        <div tw='mt-8' />
+                        <SectionSubtitle subtitle='Select context from previous bot (optional)' />
+                        <ContextBot />
+                      </div>
+                    )}
+                  </Disclosure.Panel>
+                </Transition>
+              </div>
+            )}
+          </Disclosure>
+        ))}
     </div>
   );
 };
